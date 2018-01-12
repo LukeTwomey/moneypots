@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+.pot {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+  margin: 2em;
+  padding: 1em;
+}
+
+.pot-icon{
+  margin-bottom: 1em;
+  width: 50px;
+}
+
+.progress{
+  margin-bottom: 1em;
+  width: 100%;
+}

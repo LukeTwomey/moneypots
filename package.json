@@ -1,7 +1,7 @@
 {
   "name": "moneypots",
   "version": "0.0.0",
-  "description": "Moneypots keeps track of your various savings pots for things next Christmas, your next shiny new car, or that dream holiday you've been wanting for years!",
+  "description": "Moneypots keeps track of your various savings pots for things like next Christmas, your next shiny new car, or that dream holiday you've been wanting for years!",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

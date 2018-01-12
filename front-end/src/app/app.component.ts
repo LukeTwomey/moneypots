@@ -7,7 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   potName = 'Holiday fund';
-  potBalance = '£471.72';
+  potBalance = '£471.73';
   potIcon = 'assets/holiday.png';
   progress = 'assets/progress-bar.jpg';
+
+  depositFunds(){
+    console.log("deposit");
+  }
+
+  withdrawFunds(){
+    console.log("withdraw");
+  }
 }

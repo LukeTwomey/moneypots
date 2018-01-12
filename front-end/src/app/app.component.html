@@ -1,8 +1,15 @@
 <div class="pot">
-  <h2 class="potBalance">{{potBalance}}</h2>
-  <h3 class="potName">{{potName}}</h3>
-  <img class="potIcon" [src] = 'potIcon'/>
-  <img class="progress" [src] = 'progress'/>
-  <button (click)="depositFunds()">+</button>
-  <button (click)="withdrawFunds()">-</button>
+  <div class="summary" *ngIf="displaySummary()">
+    <h2 class="potBalance">{{potBalance}}</h2>
+    <h3 class="potName">{{potName}}</h3>
+    <img class="potIcon" [src] = 'potIcon'/>
+    <img class="progress" [src] = 'progress'/>
+    <button (click)="depositFunds()">+</button>
+    <button (click)="withdrawFunds()">-</button>
+  </div>
+  <div class="manageFunds" *ngIf="manageFunds()">
+    <h2>Deposit or Withdraw</h2>
+    <p>On this screen you will be able to add or remove money from the pot. When you are finished you would return to the summary screen.</p>
+    <button (click)="returnToSummary()">Save</button>
+  </div>
 </div>

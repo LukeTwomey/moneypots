@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  potName = 'Holiday fund';
+  potBalance = '£471.72';
+  potIcon = 'assets/holiday.png';
+  progress = 'assets/progress-bar.jpg';
 }

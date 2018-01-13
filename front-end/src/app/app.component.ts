@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   potName = 'Holiday fund';
-  potBalance = '£471.73';
+  potBalance = 0;
   potIcon = 'assets/holiday.png';
   progress = 'assets/progress-bar.jpg';
   manageFundsActive = false;

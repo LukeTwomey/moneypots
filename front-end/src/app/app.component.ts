@@ -10,35 +10,51 @@ export class AppComponent {
   potBalance = 0;
   potIcon = 'assets/holiday.png';
   progress = 'assets/progress-bar.jpg';
-  manageFundsActive = false;
+  summaryActive = true;
+  depositFundsActive = false;
+  withdrawFundsActive = false;
 
   depositFunds(){
     console.log("deposit");
-    this.manageFundsActive = true;
+    this.depositFundsActive = true;
+    this.summaryActive = false;
   }
 
   withdrawFunds(){
     console.log("withdraw");
-    this.manageFundsActive = true;
+    this.withdrawFundsActive = true;
+    this.summaryActive = false;
   }
 
   returnToSummary(){
-    this.manageFundsActive = false;
+    this.depositFundsActive = false;
+    this.withdrawFundsActive = false;
+    this.summaryActive = true;
   }
+
 
   displaySummary(){
-    if (this.manageFundsActive == false) {
+    if (this.summaryActive == true) {
       return true;
     } else {
       return false;
     }
   }
 
-  manageFunds(){
-    if (this.manageFundsActive == true) {
+  displayDeposit(){
+    if (this.depositFundsActive == true) {
       return true;
     } else {
       return false;
     }
   }
+
+  displayWithdraw(){
+    if (this.withdrawFundsActive == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

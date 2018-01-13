@@ -7,9 +7,16 @@
     <button (click)="depositFunds()">+</button>
     <button (click)="withdrawFunds()">-</button>
   </div>
-  <div class="manageFunds" *ngIf="manageFunds()">
-    <h2>Deposit or Withdraw</h2>
-    <p>On this screen you will be able to add or remove money from the pot. When you are finished you would return to the summary screen.</p>
-    <button (click)="returnToSummary()">Save</button>
+
+  <div class="depositFunds" *ngIf="displayDeposit()">
+    <h2>Deposit Funds</h2>
+    <input type="number" min="0" step=".01"/>
+    <button (click)="returnToSummary()">Deposit</button>
+  </div>
+
+  <div class="withdrawFunds" *ngIf="displayWithdraw()">
+    <h2>Withdraw Funds</h2>
+    <input type="number" min="0" step=".01"/>
+    <button (click)="returnToSummary()">Withdraw</button>
   </div>
 </div>

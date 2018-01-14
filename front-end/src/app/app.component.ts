@@ -15,13 +15,11 @@ export class AppComponent {
   withdrawFundsActive = false;
 
   depositFunds(){
-    console.log("deposit");
     this.depositFundsActive = true;
     this.summaryActive = false;
   }
 
   withdrawFunds(){
-    console.log("withdraw");
     this.withdrawFundsActive = true;
     this.summaryActive = false;
   }

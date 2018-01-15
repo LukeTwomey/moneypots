@@ -76,6 +76,10 @@ input {
   margin-bottom: 1em;
 }
 
+::placeholder {
+  color: #a5a5a5;
+}
+
 .pot {
   background: #fff;
   border-radius: 2px;

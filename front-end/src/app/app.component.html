@@ -18,12 +18,12 @@
   <div class="depositFunds" *ngIf="displayDeposit()">
     <input type="number" min="0" step=".01" #depositAmount/>
     <button (click)="returnToSummary()">Cancel</button>
-    <button (click)="confirmDeposit(depositAmount.value)">Deposit</button>
+    <button (click)="confirmDeposit(depositAmount.value)" disabled>Deposit</button>
   </div>
 
   <div class="withdrawFunds" *ngIf="displayWithdraw()">
     <input type="number" min="0" step=".01" #withdrawalAmount/>
     <button (click)="returnToSummary()">Cancel</button>
-    <button (click)="confirmWithdrawal(withdrawalAmount.value)">Withdraw</button>
+    <button (click)="confirmWithdrawal(withdrawalAmount.value)" disabled>Withdraw</button>
   </div>
 </div>

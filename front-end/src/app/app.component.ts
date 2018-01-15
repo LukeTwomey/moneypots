@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   potName = 'Holiday fund';
+  accountName = 'First Direct Current Account';
   potBalance = 0;
   potIcon = 'assets/holiday.png';
   progress = 'assets/progress-bar.jpg';

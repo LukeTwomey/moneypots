@@ -56,23 +56,27 @@ export class AppComponent {
   }
 
   confirmDeposit(depositAmount){
-    var deposit = parseFloat(depositAmount);//.toFixed(2);
-
-    console.log(deposit);
-    console.log(this.potBalance);
-
-    console.log(typeof deposit);
-    console.log(typeof this.potBalance);
-
-    this.potBalance += deposit;
-    parseFloat(this.potBalance);
-    console.log(this.potBalance);
+    this.potBalance += parseFloat(depositAmount);
     this.returnToSummary();
   }
 
   confirmWithdrawal(withdrawalAmount){
-    this.potBalance -= parseFloat(withdrawalAmount).toFixed(2);
+    this.potBalance -= parseFloat(withdrawalAmount);
     this.returnToSummary();
   }
 
+  getPotBalance(){
+    return this.potBalance.toFixed(2);
+  }
+
 }
+
+
+
+
+
+
+
+
+
+

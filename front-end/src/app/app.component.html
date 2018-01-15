@@ -1,6 +1,6 @@
 <div class="pot">
   <div class="summary" *ngIf="displaySummary()">
-    <h2 class="potBalance">£{{potBalance}}</h2>
+    <h2 class="potBalance">£{{getPotBalance()}}</h2>
     <h3 class="potName">{{potName}}</h3>
     <img class="potIcon" [src] = 'potIcon'/>
     <img class="progress" [src] = 'progress'/>

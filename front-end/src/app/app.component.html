@@ -16,14 +16,18 @@
   </div>
 
   <div class="depositFunds" *ngIf="displayDeposit()">
-    <input type="number" min="0" step=".01" #depositAmount/>
-    <button (click)="returnToSummary()">Cancel</button>
-    <button (click)="confirmDeposit(depositAmount.value)" disabled>Deposit</button>
+    <form #form="ngForm" novalidate>
+      <input type="number" required placeholder="0.00" min="0" step=".01" name="depositAmount" ngModel #depositAmount>
+      <button (click)="returnToSummary()">Cancel</button>
+      <button (click)="confirmDeposit(depositAmount.value)" type="submit" [disabled]="!form.valid">Deposit</button>
+    </form>
   </div>
 
   <div class="withdrawFunds" *ngIf="displayWithdraw()">
-    <input type="number" min="0" step=".01" #withdrawalAmount/>
-    <button (click)="returnToSummary()">Cancel</button>
-    <button (click)="confirmWithdrawal(withdrawalAmount.value)" disabled>Withdraw</button>
+    <form #form="ngForm" novalidate>
+      <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
+      <button (click)="returnToSummary()">Cancel</button>
+      <button (click)="confirmWithdrawal(withdrawalAmount.value)" type="submit" [disabled]="!form.valid">Withdraw</button>
+    </form>
   </div>
 </div>

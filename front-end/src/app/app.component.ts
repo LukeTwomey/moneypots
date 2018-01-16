@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Pot } from './pot.model';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,8 @@ export class AppComponent {
   potBalance = 0;
   potIcon = 'assets/holiday.png';
   progress = 'assets/progress-bar.jpg';
+
+  pot = {};
 
   addNewPotActive = false;
   summaryActive = true;
@@ -71,8 +74,9 @@ export class AppComponent {
     return this.potBalance.toFixed(2);
   }
 
-  createPot() {
-    console.log("add new pot");
+  createPot(potDetails) {
+    this.pot = new Pot(potDetails.value);
+    console.log(this.pot);
   }
 
 }

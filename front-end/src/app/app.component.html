@@ -1,11 +1,11 @@
 <button class="addPot" (click)="addNewPotActive = true">Create Pot</button>
 
 <div class="addPotContainer container" *ngIf=addNewPotActive>
-  <form #form="ngForm" novalidate>
+  <form #form="ngForm" (ngSubmit)="createPot(form)" novalidate>
     <input type="text" required placeholder="Pot name" name="potName" ngModel #potName>
     <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName>
     <button (click)="addNewPotActive = false">Cancel</button>
-    <button (click)="createPot()" type="submit" [disabled]="!form.valid">Add</button>
+    <button type="submit" [disabled]="!form.valid">Add</button>
   </form>
 </div>
 

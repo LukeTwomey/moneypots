@@ -13,7 +13,7 @@ export class AppComponent {
   potIcon = 'assets/holiday.png';
   progress = 'assets/progress-bar.jpg';
 
-  pot = {};
+  pots = [];
 
   addNewPotActive = false;
   summaryActive = true;
@@ -75,8 +75,8 @@ export class AppComponent {
   }
 
   createPot(potDetails) {
-    this.pot = new Pot(potDetails.value);
-    console.log(this.pot);
+    this.pots.push(new Pot(potDetails.value));
+    console.log(this.pots);
   }
 
 }

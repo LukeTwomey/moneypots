@@ -77,6 +77,7 @@ export class AppComponent {
   createPot(potDetails) {
     this.pots.push(new Pot(potDetails.value));
     console.log(this.pots);
+    this.addNewPotActive = false;
   }
 
 }

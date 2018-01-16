@@ -9,7 +9,7 @@ export class Pot {
   constructor(potDetails:any) {
     this.potName = potDetails.potName;
     this.accountName = potDetails.accountName;
-    this.potBalance = potDetails.potBalance;
+    this.potBalance = 0;
     this.potIcon = 'assets/holiday.png';
     this.progress = 'assets/progress-bar.jpg';
   }

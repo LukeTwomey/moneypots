@@ -12,6 +12,7 @@ export class AppComponent {
   potIcon = 'assets/holiday.png';
   progress = 'assets/progress-bar.jpg';
 
+  addNewPotActive = false;
   summaryActive = true;
   depositFundsActive = false;
   withdrawFundsActive = false;
@@ -68,6 +69,10 @@ export class AppComponent {
 
   getPotBalance(){
     return this.potBalance.toFixed(2);
+  }
+
+  createPot() {
+    console.log("add new pot");
   }
 
 }

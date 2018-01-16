@@ -80,7 +80,7 @@ input {
   color: #a5a5a5;
 }
 
-.pot {
+.container {
   background: #fff;
   border-radius: 2px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.02);
@@ -90,6 +90,11 @@ input {
   margin: 1em 0;
   padding: 1em;
   position: relative;
+}
+
+.addPot {
+  display: block;
+  margin: 2em auto 0 auto;
 }
 
 .potIcon {

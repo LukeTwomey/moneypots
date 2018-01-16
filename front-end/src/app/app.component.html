@@ -1,4 +1,15 @@
-<div class="pot">
+<button class="addPot" (click)="addNewPotActive = true">Create Pot</button>
+
+<div class="addPotContainer container" *ngIf=addNewPotActive>
+  <form #form="ngForm" novalidate>
+    <input type="text" required placeholder="Pot name" name="potName" ngModel #potName>
+    <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName>
+    <button (click)="addNewPotActive = false">Cancel</button>
+    <button (click)="createPot()" type="submit" [disabled]="!form.valid">Add</button>
+  </form>
+</div>
+
+<div class="pot container">
   <div class="summary" *ngIf="displaySummary()">
     <div class="iconContainer">
       <img class="potIcon" [src] = 'potIcon'/>

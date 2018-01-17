@@ -7,12 +7,6 @@ import { Pot } from './pot.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  potName = 'Holiday fund';
-  accountName = 'First Direct Current Account';
-  potBalance = 0;
-  potIcon = 'assets/holiday.png';
-  progress = 'assets/progress-bar.jpg';
-
   pots = [];
 
   addNewPotActive = false;
@@ -68,10 +62,6 @@ export class AppComponent {
   confirmWithdrawal(withdrawalAmount){
     this.potBalance -= parseFloat(withdrawalAmount);
     this.returnToSummary();
-  }
-
-  getPotBalance(){
-    return this.potBalance.toFixed(2);
   }
 
   createPot(potDetails) {

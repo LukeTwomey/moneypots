@@ -2,23 +2,23 @@
 
 <div class="addPotContainer container" *ngIf=addNewPotActive>
   <form #form="ngForm" (ngSubmit)="createPot(form)" novalidate>
-    <input type="text" required placeholder="Pot name" name="potName" ngModel #potName>
+    <input type="text" required placeholder="Pot name" name="name" ngModel #potName>
     <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName>
     <button (click)="addNewPotActive = false">Cancel</button>
     <button type="submit" [disabled]="!form.valid">Create</button>
   </form>
 </div>
 
-<div class="pot container">
+<div class="pot container" *ngFor="let pot of pots">
   <div class="summary" *ngIf="displaySummary()">
     <div class="iconContainer">
-      <img class="potIcon" [src] = 'potIcon'/>
+      <img class="potIcon" [src]="pot.icon"/>
     </div>
     <div class="potDetailsContainer">
-      <h2 class="potBalance">£{{getPotBalance()}}</h2>
-      <h3 class="potName">{{potName}}</h3>
-      <h4 class="accountName">{{accountName}}</h4>
-      <img class="progress" [src] = 'progress'/>
+      <h2 class="potBalance">£{{ pot.getBalance() }}</h2>
+      <h3 class="potName">{{ pot.name }}</h3>
+      <h4 class="accountName">{{ pot.accountName }}</h4>
+      <img class="progress" [src]="pot.progress"/>
     </div>
     <div class="buttonContainer">
       <button (click)="depositFunds()">Deposit</button>

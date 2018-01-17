@@ -1,17 +1,21 @@
 export class Pot {
 
-  potName: string;
+  name: string;
   accountName: string;
-  potBalance: number;
-  potIcon: string;
+  balance: number;
+  icon: string;
   progress: string;
 
   constructor(potDetails:any) {
-    this.potName = potDetails.potName;
+    this.name = potDetails.name;
     this.accountName = potDetails.accountName;
-    this.potBalance = 0;
-    this.potIcon = 'assets/holiday.png';
+    this.balance = 0;
+    this.icon = 'assets/holiday.png';
     this.progress = 'assets/progress-bar.jpg';
+  }
+
+  getBalance() {
+    return this.balance.toFixed(2);
   }
 
 }

@@ -10,7 +10,7 @@
 </div>
 
 <div class="pot container" *ngFor="let pot of pots">
-  <div class="summary" *ngIf="summaryActive=true">
+  <div class="summary" *ngIf="summaryActive">
     <div class="iconContainer">
       <img class="potIcon" [src]="pot.icon"/>
     </div>
@@ -26,15 +26,17 @@
     </div>
   </div>
 
-  <div class="depositFunds" *ngIf="depositFundsActive=true">
+  <div class="depositFunds" *ngIf="depositFundsActive">
     <form #form="ngForm" novalidate>
+    <!-- <form #form="ngForm" (ngSubmit)="depositFunds(form)" novalidate> -->
       <input type="number" required placeholder="0.00" min="0" step=".01" name="depositAmount" ngModel #depositAmount>
       <button (click)="returnToSummary()">Cancel</button>
       <button (click)="confirmDeposit(depositAmount.value)" type="submit" [disabled]="!form.valid">Deposit</button>
+      <!-- <button type="submit" [disabled]="!form.valid">Deposit</button> -->
     </form>
   </div>
 
-  <div class="withdrawFunds" *ngIf="withdrawFundsActive=true">
+  <div class="withdrawFunds" *ngIf="withdrawFundsActive">
     <form #form="ngForm" novalidate>
       <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
       <button (click)="returnToSummary()">Cancel</button>

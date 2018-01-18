@@ -55,12 +55,12 @@ export class AppComponent {
   // }
 
   confirmDeposit(depositAmount){
-    this.potBalance += parseFloat(depositAmount);
+    //this.potBalance += parseFloat(depositAmount);
     this.returnToSummary();
   }
 
   confirmWithdrawal(withdrawalAmount){
-    this.potBalance -= parseFloat(withdrawalAmount);
+    //this.potBalance -= parseFloat(withdrawalAmount);
     this.returnToSummary();
   }
 

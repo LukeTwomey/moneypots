@@ -1,4 +1,4 @@
-<button class="addPot" (click)="addNewPotActive = true">Create Pot</button>
+<button class="addPot" (click)="addNewPotActive=true">Create Pot</button>
 
 <div class="addPotContainer container" *ngIf=addNewPotActive>
   <form #form="ngForm" (ngSubmit)="createPot(form)" novalidate>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="pot container" *ngFor="let pot of pots">
-  <div class="summary" *ngIf="displaySummary()">
+  <div class="summary" *ngIf="summaryActive=true">
     <div class="iconContainer">
       <img class="potIcon" [src]="pot.icon"/>
     </div>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="depositFunds" *ngIf="displayDeposit()">
+  <div class="depositFunds" *ngIf="depositFundsActive=true">
     <form #form="ngForm" novalidate>
       <input type="number" required placeholder="0.00" min="0" step=".01" name="depositAmount" ngModel #depositAmount>
       <button (click)="returnToSummary()">Cancel</button>
@@ -34,7 +34,7 @@
     </form>
   </div>
 
-  <div class="withdrawFunds" *ngIf="displayWithdraw()">
+  <div class="withdrawFunds" *ngIf="withdrawFundsActive=true">
     <form #form="ngForm" novalidate>
       <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
       <button (click)="returnToSummary()">Cancel</button>

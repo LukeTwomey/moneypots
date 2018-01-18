@@ -30,30 +30,6 @@ export class AppComponent {
     this.summaryActive = true;
   }
 
-  // displaySummary(){
-  //   if (this.summaryActive == true) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  // displayDeposit(){
-  //   if (this.depositFundsActive == true) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  // displayWithdraw(){
-  //   if (this.withdrawFundsActive == true) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
   confirmDeposit(depositAmount){
     //this.potBalance += parseFloat(depositAmount);
     this.returnToSummary();

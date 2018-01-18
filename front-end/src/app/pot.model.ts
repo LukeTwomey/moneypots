@@ -5,7 +5,7 @@ export class Pot {
   balance: number;
   target: number;
   icon: string;
-  progress: string;
+  progress: number;
 
   summaryActive: boolean;
   depositFundsActive: boolean;
@@ -17,7 +17,7 @@ export class Pot {
     this.balance = 0;
     this.target = potDetails.target ? potDetails.target : 0;
     this.icon = 'assets/holiday.png';
-    this.progress = 'assets/progress-bar.jpg';
+    this.progress = 0;
 
     this.summaryActive = true;
     this.depositFundsActive = false;
@@ -30,28 +30,34 @@ export class Pot {
 
   deposit(depositAmount) {
     this.balance += parseFloat(depositAmount);
+    this.updateProgressBar();
     this.returnToSummary();
   }
 
   withdraw(withdrawalAmount) {
     this.balance -= parseFloat(withdrawalAmount);
+    this.updateProgressBar();
     this.returnToSummary();
   }
 
-  returnToSummary(){
+  returnToSummary() {
     this.depositFundsActive = false;
     this.withdrawFundsActive = false;
     this.summaryActive = true;
   }
 
-  depositFunds(){
+  depositFunds() {
     this.depositFundsActive = true;
     this.summaryActive = false;
   }
 
-  withdrawFunds(){
+  withdrawFunds() {
     this.withdrawFundsActive = true;
     this.summaryActive = false;
+  }
+
+  updateProgressBar() {
+    this.progress = (this.balance/this.target) * 100;
   }
 
 }

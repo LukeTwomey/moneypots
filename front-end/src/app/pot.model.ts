@@ -6,7 +6,6 @@ export class Pot {
   target: number;
   icon: string;
   progress: number;
-
   summaryActive: boolean;
   depositFundsActive: boolean;
   withdrawFundsActive: boolean;
@@ -18,7 +17,6 @@ export class Pot {
     this.target = potDetails.target ? potDetails.target : 0;
     this.icon = 'assets/holiday.png';
     this.progress = 0;
-
     this.summaryActive = true;
     this.depositFundsActive = false;
     this.withdrawFundsActive = false;

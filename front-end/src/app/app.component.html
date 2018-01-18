@@ -12,9 +12,12 @@
 
 <div class="pot container" *ngFor="let pot of pots">
   <div class="summary" *ngIf="pot.summaryActive">
+    <button class="settings fas fa-cog"></button>
+
     <div class="iconContainer">
       <img class="potIcon" [src]="pot.icon"/>
     </div>
+
     <div class="potDetailsContainer">
       <h2 class="potBalance">£{{ pot.getBalance() }}<span class="target"> / £{{ pot.target }}</span></h2>
       <h3 class="potName">{{ pot.name }}</h3>
@@ -25,6 +28,7 @@
         </div>
       </div>
     </div>
+
     <div class="buttonContainer">
       <button (click)="pot.depositFunds()">Deposit</button>
       <button (click)="pot.withdrawFunds()">Withdraw</button>

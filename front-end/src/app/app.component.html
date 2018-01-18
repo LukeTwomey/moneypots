@@ -18,7 +18,9 @@
       <h2 class="potBalance">£{{ pot.getBalance() }}</h2>
       <h3 class="potName">{{ pot.name }}</h3>
       <h4 class="accountName">{{ pot.accountName }}</h4>
-      <img class="progress" [src]="pot.progress"/>
+      <div class="progress">
+        <div class="progressBar"></div>
+      </div>
     </div>
     <div class="buttonContainer">
       <button (click)="pot.depositFunds()">Deposit</button>

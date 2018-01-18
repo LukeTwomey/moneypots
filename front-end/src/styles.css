@@ -113,5 +113,22 @@ input {
 }
 
 .progress {
+  background-color: #d2d2d2;
   width: 100%;
 }
+
+.progressBar {
+  background-color: #06b127;
+  width: 70%;
+  height: 7px;
+}
+
+
+
+
+
+
+
+
+
+

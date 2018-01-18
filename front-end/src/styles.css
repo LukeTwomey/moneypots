@@ -97,6 +97,10 @@ input {
   margin: 2em auto 0 auto;
 }
 
+.target {
+  font-size: 0.6em;
+}
+
 .potIcon {
   width: 100%;
 }
@@ -121,7 +125,6 @@ input {
   background-color: #06b127;
   height: 7px;
 }
-
 
 
 

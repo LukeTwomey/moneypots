@@ -3,6 +3,7 @@ export class Pot {
   name: string;
   accountName: string;
   balance: number;
+  target: number;
   icon: string;
   progress: string;
 
@@ -14,6 +15,7 @@ export class Pot {
     this.name = potDetails.name;
     this.accountName = potDetails.accountName;
     this.balance = 0;
+    this.target = potDetails.target ? potDetails.target : 0;
     this.icon = 'assets/holiday.png';
     this.progress = 'assets/progress-bar.jpg';
 

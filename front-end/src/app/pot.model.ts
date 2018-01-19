@@ -9,6 +9,7 @@ export class Pot {
   summaryActive: boolean;
   depositFundsActive: boolean;
   withdrawFundsActive: boolean;
+  settingsActive: boolean;
 
   constructor(potDetails:any) {
     this.name = potDetails.name;
@@ -20,6 +21,7 @@ export class Pot {
     this.summaryActive = true;
     this.depositFundsActive = false;
     this.withdrawFundsActive = false;
+    this.settingsActive = false;
   }
 
   getBalance() {
@@ -41,6 +43,7 @@ export class Pot {
   returnToSummary() {
     this.depositFundsActive = false;
     this.withdrawFundsActive = false;
+    this.settingsActive = false;
     this.summaryActive = true;
   }
 
@@ -54,8 +57,18 @@ export class Pot {
     this.summaryActive = false;
   }
 
+  changeSettings() {
+    this.settingsActive = true;
+    this.summaryActive = false;
+  }
+
   updateProgressBar() {
     this.progress = (this.balance/this.target) * 100;
+  }
+
+  updateSettings() {
+    this.updateProgressBar();
+    this.returnToSummary();
   }
 
 }

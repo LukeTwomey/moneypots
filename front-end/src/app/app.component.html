@@ -12,7 +12,9 @@
 
 <div class="pot container" *ngFor="let pot of pots">
   <div class="summary" *ngIf="pot.summaryActive">
-    <button class="settings fas fa-cog"></button>
+    <div class="set" (click)="pot.changeSettings()">
+    <button class="settings fas fa-cog" ></button>
+    </div>
 
     <div class="iconContainer">
       <img class="potIcon" [src]="pot.icon"/>
@@ -48,6 +50,16 @@
       <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
       <button (click)="pot.returnToSummary()">Cancel</button>
       <button type="submit" [disabled]="!form.valid">Withdraw</button>
+    </form>
+  </div>
+
+  <div class="potSettings" *ngIf="pot.settingsActive">
+    <form #form="ngForm" (ngSubmit)="pot.updateSettings(form)" novalidate>
+      <input type="text" required placeholder="Pot name" name="name" ngModel #potName [(ngModel)]="pot.name">
+      <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName [(ngModel)]="pot.accountName">
+      <input type="number" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target [(ngModel)]="pot.target">
+      <button (click)="pot.returnToSummary()">Cancel</button>
+      <button type="submit" [disabled]="!form.valid">Update</button>
     </form>
   </div>
 </div>

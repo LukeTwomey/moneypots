@@ -69,7 +69,7 @@
     <h3>This action cannot be undone. Are you absolutely certain you want to delete this pot?</h3>
     <form #form="ngForm" (ngSubmit)="deletePot(pot.name)" novalidate>
       <button (click)="pot.returnToSettings()">Cancel</button>
-      <button class="delete" type="submit">Delete Pot</button>
+      <button class="delete" type="submit">Yes, Delete Pot</button>
     </form>
   </div>
 </div>

@@ -17,6 +17,14 @@ export class AppComponent {
     this.addNewPotActive = false;
   }
 
+  deletePot(potName) {
+    this.pots = this.pots.filter(function(el) {
+        return el.name !== potName;
+    });
+
+    console.log(this.pots);
+  }
+
 }
 
 

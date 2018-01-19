@@ -22,6 +22,10 @@ h2 {
   margin-bottom: 0.4em;
 }
 
+h3 {
+  line-height: 1.3em;
+}
+
 .iconContainer,
 .potDetailsContainer {
   float: left;
@@ -65,6 +69,11 @@ button[disabled]{
   background: #dfdfdf;
   box-shadow: none;
   color: #a5a5a5;
+}
+
+.delete {
+  background: #ff3c3c;
+  margin: 1.5em 0 0 0;
 }
 
 input {

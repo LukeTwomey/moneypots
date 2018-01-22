@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { PotService } from './pot.service';
 import { PotComponent } from './pots/pot.component';
-
 
 @NgModule({
   declarations: [
@@ -15,7 +15,9 @@ import { PotComponent } from './pots/pot.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    PotService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

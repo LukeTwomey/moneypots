@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PotService } from '../pot.service';
 import { Pot } from './shared/pot.model';
 
 @Component({
@@ -6,7 +7,23 @@ import { Pot } from './shared/pot.model';
   templateUrl: './pot.component.html'
 })
 export class PotComponent {
-  pots = [];
+  pots;
+
+  constructor(private potService: PotService) {
+
+  }
+
+  ngOnInit() {
+    this.getPots();
+    console.log("Pot component here, asking for pots data from the service:");
+    console.log(this.pots);
+  }
+
+  getPots() {
+    this.pots = this.potService.getPots();
+  }
+
+  // pots = [];
 
   // addNewPotActive = false;
 

@@ -8,35 +8,27 @@ import { Pot } from './shared/pot.model';
 })
 export class PotComponent {
   pots =[];
+  addNewPotActive = false;
 
   constructor(private potService: PotService) {}
 
   ngOnInit() {
     this.getPots();
-    console.log("App here, asking for pots data from the service:");
-    console.log(this.pots);
   }
 
   getPots() {
     this.pots = this.potService.getPots();
   }
 
-  // pots = [];
+  createPot(potDetails) {
+    this.potService.createPot(potDetails);
+    this.addNewPotActive = false;
+  }
 
-  // addNewPotActive = false;
-
-  // createPot(potDetails) {
-  //   this.pots.push(new Pot(potDetails.value));
-  //   console.log(this.pots);
-  //   this.addNewPotActive = false;
-  // }
-
-  // deletePot(potName) {
-  //   this.pots = this.pots.filter(function(el) {
-  //       return el.name !== potName;
-  //   });
-  //   console.log(this.pots);
-  // }
+  deletePot(potName) {
+    this.potService.deletePot(potName);
+    this.getPots();
+  }
 
 }
 

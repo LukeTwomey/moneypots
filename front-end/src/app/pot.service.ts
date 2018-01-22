@@ -5,26 +5,22 @@ import { Pot } from './pots/shared/pot.model';
 export class PotService {
   pots = [];
 
-  constructor() {
-    console.log("Pot service starting...");
-  }
-
   getPots() {
     return this.pots;
   }
 
-  // createPot(potDetails) {
-  //   this.pots.push(new Pot(potDetails.value));
-  //   console.log(this.pots);
-  //   // this.addNewPotActive = false;
-  // }
+  createPot(potDetails) {
+    this.pots.push(new Pot(potDetails.value));
+    console.log("Service here. Added pot. Here is what I have now:");
+    console.log(this.pots);
+  }
 
-  // deletePot(potName) {
-  //   this.pots = this.pots.filter(function(el) {
-  //       return el.name !== potName;
-  //   });
-
-  //   console.log(this.pots);
-  // }
+  deletePot(potName) {
+    this.pots = this.pots.filter(function(el) {
+        return el.name !== potName;
+    });
+    console.log("Service here. Deleted pot. Here is what I have now:");
+    console.log(this.pots);
+  }
 
 }

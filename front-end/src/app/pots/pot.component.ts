@@ -7,15 +7,13 @@ import { Pot } from './shared/pot.model';
   templateUrl: './pot.component.html'
 })
 export class PotComponent {
-  pots;
+  pots =[];
 
-  constructor(private potService: PotService) {
-
-  }
+  constructor(private potService: PotService) {}
 
   ngOnInit() {
     this.getPots();
-    console.log("Pot component here, asking for pots data from the service:");
+    console.log("App here, asking for pots data from the service:");
     console.log(this.pots);
   }
 

@@ -5,8 +5,8 @@
     <input type="text" required placeholder="Pot name" name="name" ngModel #potName>
     <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName>
     <input type="number" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target>
-    <button (click)="addNewPotActive = false">Cancel</button>
-    <button type="submit" [disabled]="!form.valid">Create</button>
+    <button (click)="addNewPotActive=false">Cancel</button>
+    <button (click)="addNewPotActive=false" type="submit" [disabled]="!form.valid">Create</button>
   </form>
 </div>
 

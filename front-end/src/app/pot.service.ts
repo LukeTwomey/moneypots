@@ -3,7 +3,7 @@ import { Pot } from './pots/shared/pot.model';
 
 @Injectable()
 export class PotService {
-  pots = [{name: 'test'}];
+  pots = [];
 
   constructor() {
     console.log("Pot service starting...");

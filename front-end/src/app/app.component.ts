@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pot } from './pot.model';
+import { Pot } from './pots/shared/pot.model';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,7 @@ import { Pot } from './pot.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pots = [];
+  // pots = [];
 
   addNewPotActive = false;
 

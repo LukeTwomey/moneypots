@@ -15,9 +15,9 @@ export class PotService {
     console.log(this.pots);
   }
 
-  deletePot(potName) {
+  deletePot(potId) {
     this.pots = this.pots.filter(function(el) {
-        return el.name !== potName;
+        return el.id !== potId;
     });
     console.log("Service here. Deleted pot. Here is what I have now:");
     console.log(this.pots);

@@ -7,7 +7,7 @@ import { Pot } from './shared/pot.model';
   templateUrl: './pot.component.html'
 })
 export class PotComponent {
-  pots =[];
+  pots = [];
   addNewPotActive = false;
 
   constructor(private potService: PotService) {}
@@ -25,8 +25,8 @@ export class PotComponent {
     this.addNewPotActive = false;
   }
 
-  deletePot(potName) {
-    this.potService.deletePot(potName);
+  deletePot(potId) {
+    this.potService.deletePot(potId);
     this.getPots();
   }
 

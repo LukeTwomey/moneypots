@@ -1,5 +1,8 @@
+var id = 1;
+
 export class Pot {
 
+  id: number;
   name: string;
   accountName: string;
   balance: number;
@@ -13,6 +16,7 @@ export class Pot {
   deleteActive: boolean;
 
   constructor(potDetails:any) {
+    this.id = id++;
     this.name = potDetails.name;
     this.accountName = potDetails.accountName;
     this.balance = 0;

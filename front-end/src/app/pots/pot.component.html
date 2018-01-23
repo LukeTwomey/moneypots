@@ -47,6 +47,7 @@
 
   <div class="withdrawFunds" *ngIf="pot.withdrawFundsActive">
     <form #form="ngForm" (ngSubmit)="pot.withdraw(withdrawalAmount.value)" novalidate>
+      <h2 class="potBalance">Current Balance £{{ pot.getBalance() }}</h2>
       <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
       <button (click)="pot.returnToSummary()">Cancel</button>
       <button type="submit" [disabled]="!form.valid">Withdraw</button>

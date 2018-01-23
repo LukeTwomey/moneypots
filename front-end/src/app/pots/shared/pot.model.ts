@@ -83,13 +83,67 @@ export class Pot {
   }
 
   updateProgressBar() {
+    // Only update the progress bar if a pot target has been set
     if(this.target > 0) {
+
+      var startPoint = this.progress;
+      var endPoint;
+
+      // If you deposit more than the target, then the endPoint will always be 100
       if(this.balance/this.target <= 1) {
-        this.progress = (this.balance/this.target) * 100;
+        endPoint = (this.balance/this.target) * 100;
+        console.log("here");
       } else {
-        this.progress = 100;
+        endPoint = 100;
+        console.log("there");
       }
+
+      // var elem = document.getElementById("myBar");
+      // var width = startPoint;
+
+      // var id = setInterval(this.frame(startPoint, endPoint, id), 10);
+
+      // var elem = document.getElementById("progressBar");
+      // console.log(elem);
+      console.log("Name: " + this.name);
+      var self = this;
+
+      var interval = setInterval(function(){
+        // console.log(this.startPoint);
+        // console.log(this.progress);
+        // console.log("Name: " + self.name);
+
+        startPoint++;
+        self.progress = startPoint;
+
+        if(self.progress == endPoint) {
+          clearInterval(interval);
+        }
+
+        // console.log(startPoint);
+        // console.log(this.progress);
+
+
+        // elem.style.width = this.progress + '%';
+      }, 10);
+
+      // frame() {
+      // alert("should be getting called over and over");
+      // if (startPoint == endPoint) {
+      //   clearInterval(id);
+      //   console.log("shouldn't be in here");
+      // } else {
+      //   console.log("everywhere");
+      //   startPoint++;
+      //   // elem.style.width = width + '%';
+      //   this.progress = startPoint;
+      // }
+
+
+      //}
     }
+
+
   }
 
   updateSettings() {

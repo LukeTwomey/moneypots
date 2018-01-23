@@ -84,7 +84,11 @@ export class Pot {
 
   updateProgressBar() {
     if(this.target > 0) {
-      this.progress = (this.balance/this.target) * 100;
+      if(this.balance/this.target <= 1) {
+        this.progress = (this.balance/this.target) * 100;
+      } else {
+        this.progress = 100;
+      }
     }
   }
 

@@ -14,6 +14,7 @@ export class Pot {
   withdrawFundsActive: boolean;
   settingsActive: boolean;
   deleteActive: boolean;
+  preventWithdraw: boolean;
 
   constructor(potDetails:any) {
     this.id = id++;
@@ -28,6 +29,7 @@ export class Pot {
     this.withdrawFundsActive = false;
     this.settingsActive = false;
     this.deleteActive = false;
+    this.preventWithdraw = false;
   }
 
   getBalance() {
@@ -41,9 +43,13 @@ export class Pot {
   }
 
   withdraw(withdrawalAmount) {
-    this.balance -= parseFloat(withdrawalAmount);
-    this.updateProgressBar();
-    this.returnToSummary();
+    if(this.balance - parseFloat(withdrawalAmount) >= 0) {
+      this.balance -= parseFloat(withdrawalAmount);
+      this.updateProgressBar();
+      this.returnToSummary();
+    } else {
+      this.preventWithdraw = true;
+    }
   }
 
   returnToSummary() {
@@ -51,6 +57,7 @@ export class Pot {
     this.withdrawFundsActive = false;
     this.settingsActive = false;
     this.summaryActive = true;
+    this.preventWithdraw = false;
   }
 
   returnToSettings() {

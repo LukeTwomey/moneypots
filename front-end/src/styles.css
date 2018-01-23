@@ -9,6 +9,10 @@ html {
   box-sizing: inherit;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 body {
   background: #e2e1e0;
   color: #313131;
@@ -147,7 +151,10 @@ input {
   height: 7px;
 }
 
-
+.preventWithdrawal {
+  color: #ff3c3c;
+  margin-top: 0.5em;
+}
 
 
 

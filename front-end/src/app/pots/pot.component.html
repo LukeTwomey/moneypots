@@ -50,6 +50,7 @@
       <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
       <button (click)="pot.returnToSummary()">Cancel</button>
       <button type="submit" [disabled]="!form.valid">Withdraw</button>
+      <h3 class="preventWithdrawal" *ngIf="pot.preventWithdraw">The most you can withdraw is <span class="bold">£{{ pot.getBalance() }}</span></h3>
     </form>
   </div>
 

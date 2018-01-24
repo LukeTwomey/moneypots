@@ -92,10 +92,8 @@ export class Pot {
       // If you deposit more than the target, then the endPoint will always be 100
       if(this.balance/this.target <= 1) {
         endPoint = Math.floor((this.balance/this.target) * 100);
-        console.log("here");
       } else {
         endPoint = 100;
-        console.log("there");
       }
 
       // Keep updating the progress value for the pot, until it reaches the current balance

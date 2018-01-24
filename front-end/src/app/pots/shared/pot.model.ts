@@ -88,18 +88,34 @@ export class Pot {
 
       var startPoint = this.progress;
       var endPoint;
+      var transactionType;
 
-      // If you deposit more than the target, then the endPoint will always be 100
-      if(this.balance/this.target <= 1) {
+      // Endpoint value depends on what the balance is
+      if(this.balance == 0) {
+        endPoint = 0;
+      } else if(this.balance/this.target <= 1) {
         endPoint = Math.floor((this.balance/this.target) * 100);
       } else {
         endPoint = 100;
       }
 
+      // Transaction type will either be Deposit or Withdrawal
+      if(endPoint > this.progress) {
+        transactionType = 'deposit';
+      } else {
+        transactionType = 'withdrawal';
+      }
+
       // Keep updating the progress value for the pot, until it reaches the current balance
       var self = this;
       var interval = setInterval(function(){
-        startPoint++;
+        // If transaction is a deposit, then you need to move progress bar up, for withdrawal it needs to go down
+        if(transactionType == 'deposit') {
+          startPoint++;
+        } else {
+          startPoint--;
+        }
+
         self.progress = startPoint;
         if(self.progress == endPoint) {
           clearInterval(interval);

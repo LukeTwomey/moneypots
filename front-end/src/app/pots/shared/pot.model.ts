@@ -94,7 +94,7 @@ export class Pot {
       if(this.balance == 0) {
         endPoint = 0;
       } else if(this.balance/this.target <= 1) {
-        endPoint = Math.floor((this.balance/this.target) * 100);
+        endPoint = Math.round((this.balance/this.target) * 100);
       } else {
         endPoint = 100;
       }
@@ -117,6 +117,10 @@ export class Pot {
         }
 
         self.progress = startPoint;
+
+        console.log(startPoint);
+        console.log(endPoint);
+
         if(self.progress == endPoint) {
           clearInterval(interval);
         }

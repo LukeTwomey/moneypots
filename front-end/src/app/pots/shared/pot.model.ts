@@ -83,14 +83,16 @@ export class Pot {
   }
 
   updateProgressBar() {
+
     // Only update the progress bar if a pot target has been set
     if(this.target > 0) {
 
+      var self = this;
       var startPoint = this.progress;
       var endPoint;
-      var transactionType;
+      var progressBarDirection;
 
-      // Endpoint value depends on what the balance is
+      // Endpoint value is where the progress bar needs to end up
       if(this.balance == 0) {
         endPoint = 0;
       } else if(this.balance/this.target <= 1) {
@@ -99,18 +101,20 @@ export class Pot {
         endPoint = 100;
       }
 
-      // Transaction type will either be Deposit or Withdrawal
-      if(endPoint > this.progress) {
-        transactionType = 'deposit';
-      } else {
-        transactionType = 'withdrawal';
+      if(endPoint == startPoint) { // No deposit or withdrawal has been made, and the pot target has not been changed
+        return
+      } else if(endPoint > startPoint) { // Deposit made, or pot target reduced
+        progressBarDirection = 'up';
+        console.log("progress bar direction should be up");
+      } else { // Withdrawal made, or pot target increased
+        progressBarDirection = 'down';
+        console.log("progress bar direction should be down");
       }
 
-      // Keep updating the progress value for the pot, until it reaches the current balance
-      var self = this;
+      // Repeat setInterval until progress bar is in correct position
       var interval = setInterval(function(){
-        // If transaction is a deposit, then you need to move progress bar up, for withdrawal it needs to go down
-        if(transactionType == 'deposit') {
+
+        if(progressBarDirection == 'up') {
           startPoint++;
         } else {
           startPoint--;
@@ -118,13 +122,11 @@ export class Pot {
 
         self.progress = startPoint;
 
-        console.log(startPoint);
-        console.log(endPoint);
-
         if(self.progress == endPoint) {
           clearInterval(interval);
         }
       }, 10);
+
     }
   }
 

@@ -142,6 +142,12 @@ input {
   margin-bottom: 0.8em;
 }
 
+.progressAndTarget {
+  width: 94%;
+  margin: 0.5em auto 0 auto;
+  display: inline-block;
+}
+
 .progress {
   background-color: #d2d2d2;
   width: 100%;

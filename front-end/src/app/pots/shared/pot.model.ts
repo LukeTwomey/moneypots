@@ -105,10 +105,8 @@ export class Pot {
         return
       } else if(endPoint > startPoint) { // Deposit made, or pot target reduced
         progressBarDirection = 'up';
-        console.log("progress bar direction should be up");
       } else { // Withdrawal made, or pot target increased
         progressBarDirection = 'down';
-        console.log("progress bar direction should be down");
       }
 
       // Repeat setInterval until progress bar is in correct position

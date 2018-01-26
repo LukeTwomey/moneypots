@@ -33,7 +33,11 @@ export class Pot {
   }
 
   getBalance() {
-    return this.balance.toFixed(2);
+    return this.numberWithCommas(this.balance.toFixed(2));
+  }
+
+  getTarget() {
+    return this.numberWithCommas(this.target.toFixed(2));
   }
 
   deposit(depositAmount) {
@@ -136,6 +140,10 @@ export class Pot {
   deleteConfirm() {
     this.settingsActive = false;
     this.deleteActive = true;
+  }
+
+  numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
 }

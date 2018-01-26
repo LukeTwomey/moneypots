@@ -153,6 +153,10 @@ input {
   width: 100%;
 }
 
+.targetReached {
+  background-color: #ffcb16;
+}
+
 .progressBar {
   background-color: #06b127;
   height: 7px;

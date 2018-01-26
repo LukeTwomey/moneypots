@@ -126,6 +126,13 @@ export class Pot {
 
         if(self.progress == endPoint) {
           clearInterval(interval);
+          var bar = document.getElementById('progressBar');
+          console.log(self.progress);
+          if(self.progress >= 100) {
+            bar.style.background = '#f8c40e';
+          } else {
+            bar.style.background = '#06b127';
+          }
         }
       }, 10);
 

@@ -9,6 +9,7 @@ export class Pot {
   target: number;
   icon: string;
   progress: number;
+  progressBarColor: string;
   summaryActive: boolean;
   depositFundsActive: boolean;
   withdrawFundsActive: boolean;
@@ -24,6 +25,7 @@ export class Pot {
     this.target = potDetails.target ? potDetails.target : 0;
     this.icon = 'assets/holiday.png';
     this.progress = 0;
+    this.progressBarColor = '#06b127';
     this.summaryActive = true;
     this.depositFundsActive = false;
     this.withdrawFundsActive = false;
@@ -127,11 +129,10 @@ export class Pot {
         if(self.progress == endPoint) {
           clearInterval(interval);
           var bar = document.getElementById('progressBar');
-          console.log(self.progress);
           if(self.progress >= 100) {
-            bar.style.background = '#f8c40e';
+            self.progressBarColor = '#f8c40e';
           } else {
-            bar.style.background = '#06b127';
+            self.progressBarColor = '#06b127';
           }
         }
       }, 10);

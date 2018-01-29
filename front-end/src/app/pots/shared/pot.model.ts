@@ -108,6 +108,7 @@ export class Pot {
       }
 
       if(endPoint == startPoint) { // No deposit or withdrawal has been made, and the pot target has not been changed
+        this.changeProgressBarColor();
         return
       } else if(endPoint > startPoint) { // Deposit made, or pot target reduced
         progressBarDirection = 'up';
@@ -128,15 +129,18 @@ export class Pot {
 
         if(self.progress == endPoint) {
           clearInterval(interval);
-          var bar = document.getElementById('progressBar');
-          if(self.progress >= 100) {
-            self.progressBarColor = '#f8c40e';
-          } else {
-            self.progressBarColor = '#06b127';
-          }
+          self.changeProgressBarColor();
         }
       }, 10);
 
+    }
+  }
+
+  changeProgressBarColor() {
+    if(this.balance >= this.target) {
+      this.progressBarColor = '#f8c40e';
+    } else {
+      this.progressBarColor = '#06b127';
     }
   }
 

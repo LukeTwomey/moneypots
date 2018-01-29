@@ -114,6 +114,7 @@ export class Pot {
         progressBarDirection = 'up';
       } else { // Withdrawal made, or pot target increased
         progressBarDirection = 'down';
+        self.changeProgressBarColor();
       }
 
       // Repeat setInterval until progress bar is in correct position

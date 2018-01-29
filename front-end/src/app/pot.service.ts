@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import { Pot } from './pots/shared/pot.model';
 
 @Injectable()
 export class PotService {
+
+  constructor(private http: Http) {}
+
   pots = [];
 
   getPots() {
-    return this.pots;
+    this.http.get("/api/pots");
   }
 
   createPot(potDetails) {

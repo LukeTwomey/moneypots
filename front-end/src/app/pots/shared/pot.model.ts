@@ -131,7 +131,7 @@ export class Pot {
           clearInterval(interval);
           self.changeProgressBarColor();
         }
-      }, 10);
+      }, 15);
 
     }
   }

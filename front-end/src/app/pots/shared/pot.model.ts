@@ -34,10 +34,14 @@ export class Pot {
     this.preventWithdraw = false;
   }
 
+  // Balance is stored as a number in the pot, but needs to be returned as 2 decimal point string, and then formatted
+  // to include commas for presenting to the user
   getBalance() {
     return this.numberWithCommas(this.balance.toFixed(2));
   }
 
+  // Target is stored as a number in the pot, but needs to be returned as 2 decimal point string, and then formatted
+  // to include commas for presenting to the user
   getTarget() {
     return this.numberWithCommas(this.target.toFixed(2));
   }
@@ -54,7 +58,7 @@ export class Pot {
       this.updateProgressBar();
       this.returnToSummary();
     } else {
-      this.preventWithdraw = true;
+      this.preventWithdraw = true; // User should be prevented from withdrawing more than what is currently in the pot
     }
   }
 
@@ -114,7 +118,7 @@ export class Pot {
         progressBarDirection = 'up';
       } else { // Withdrawal made, or pot target increased
         progressBarDirection = 'down';
-        self.changeProgressBarColor();
+        this.changeProgressBarColor();
       }
 
       // Repeat setInterval until progress bar is in correct position

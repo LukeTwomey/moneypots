@@ -7,24 +7,23 @@ export class PotService {
 
   constructor(private http: Http) {}
 
-  pots = [];
-
   getPots() {
-    this.http.get("/api/pots");
+    console.log("Pot service: requesting pots from API...");
+    this.http.get("http://localhost:8080/api/pots");
   }
 
-  createPot(potDetails) {
-    this.pots.push(new Pot(potDetails.value));
-    console.log("Service here. Added pot. Here is what I have now:");
-    console.log(this.pots);
-  }
+  // createPot(potDetails) {
+  //   this.pots.push(new Pot(potDetails.value));
+  //   console.log("Service here. Added pot. Here is what I have now:");
+  //   console.log(this.pots);
+  // }
 
-  deletePot(potId) {
-    this.pots = this.pots.filter(function(el) {
-        return el.id !== potId;
-    });
-    console.log("Service here. Deleted pot. Here is what I have now:");
-    console.log(this.pots);
-  }
+  // deletePot(potId) {
+  //   this.pots = this.pots.filter(function(el) {
+  //       return el.id !== potId;
+  //   });
+  //   console.log("Service here. Deleted pot. Here is what I have now:");
+  //   console.log(this.pots);
+  // }
 
 }

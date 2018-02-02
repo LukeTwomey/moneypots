@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/do';
 import { Pot } from './pots/shared/pot.model';
 
 @Injectable()
 export class PotService {
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
-  getPots() {
+  // getPots() {
+  //   console.log("Pot service: requesting pots from API...");
+  //   return this.http.get("http://localhost:8080/api/pots");
+  // }
+
+  getPots(): Observable<any> {
     console.log("Pot service: requesting pots from API...");
-    this.http.get("http://localhost:8080/api/pots");
+
+    return this.http.get('http://localhost:4100/api/pots')
+      .do(data => console.log('Data from API: ' + JSON.stringify(data)));
   }
 
   // createPot(potDetails) {

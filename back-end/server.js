@@ -12,7 +12,14 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;        // set our port
+// allow cors
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+var port = process.env.PORT || 4100;        // set our port
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -25,7 +32,25 @@ router.get('/', function(req, res) {
 
 // more routes for our API will happen here
 router.get('/pots', function(req, res) {
-    res.json({ message: 'you want pots? you got pots...' });
+  console.log("Server: received request from the front-end...");
+  res.json([
+      {
+        "id": 1,
+        "name": "Holiday Fund",
+        "accountName": "Halifax Current Account",
+        "balance": 0,
+        "target": 2000,
+        "icon": "assets/holiday.png",
+        "progress": 0,
+        "progressBarColor": "#06b127",
+        "summaryActive": true,
+        "depositFundsActive": false,
+        "withdrawFundsActive": false,
+        "settingsActive": false,
+        "deleteActive": false,
+        "preventWithdraw": false,
+      }
+    ]);
 });
 
 // REGISTER OUR ROUTES -------------------------------

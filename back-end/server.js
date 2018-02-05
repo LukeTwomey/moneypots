@@ -1,4 +1,7 @@
 
+import { PotService } from './shared/pot.service';
+potService = new PotService;
+
 // BASE SETUP
 // =============================================================================
 
@@ -33,40 +36,8 @@ router.get('/', function(req, res) {
 // more routes for our API will happen here
 router.get('/pots', function(req, res) {
   console.log("Server: received request from the front-end...");
-  res.json([
-      {
-        "id": 1,
-        "name": "Holiday Fund",
-        "accountName": "Halifax Current Account",
-        "balance": 47.47,
-        "target": 2000,
-        "icon": "assets/holiday.png",
-        "progress": 0,
-        "progressBarColor": "#06b127",
-        "summaryActive": true,
-        "depositFundsActive": false,
-        "withdrawFundsActive": false,
-        "settingsActive": false,
-        "deleteActive": false,
-        "preventWithdraw": false,
-      },
-      {
-        "id": 2,
-        "name": "New Car",
-        "accountName": "Monzo",
-        "balance": 250.33,
-        "target": 10000,
-        "icon": "assets/holiday.png",
-        "progress": 0,
-        "progressBarColor": "#06b127",
-        "summaryActive": true,
-        "depositFundsActive": false,
-        "withdrawFundsActive": false,
-        "settingsActive": false,
-        "deleteActive": false,
-        "preventWithdraw": false,
-      }
-    ]);
+  console.log(potService.getPots());
+  // res.json();
 });
 
 // REGISTER OUR ROUTES -------------------------------

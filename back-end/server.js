@@ -38,7 +38,7 @@ router.get('/pots', function(req, res) {
         "id": 1,
         "name": "Holiday Fund",
         "accountName": "Halifax Current Account",
-        "balance": 0,
+        "balance": 47.47,
         "target": 2000,
         "icon": "assets/holiday.png",
         "progress": 0,

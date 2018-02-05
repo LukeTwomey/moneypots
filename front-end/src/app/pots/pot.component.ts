@@ -1,7 +1,6 @@
 import { Observable } from "rxjs/Observable";
 import { Component } from '@angular/core';
 import { PotService } from '../pot.service';
-import { Pot } from './shared/pot.model';
 
 @Component({
   selector: 'pots-list',
@@ -9,7 +8,6 @@ import { Pot } from './shared/pot.model';
 })
 export class PotComponent {
   pots = [];
-  // public pots$: Observable<any>;
   addNewPotActive = false;
 
   constructor(private potService: PotService) {}
@@ -19,12 +17,6 @@ export class PotComponent {
   }
 
   getPots() {
-    // this.pots = this.potService.getPots();
-
-    // let temp = this.potService.getPots();
-    // console.log(temp);
-
-    console.log("Here");
     this.potService.getPots()
       .subscribe(pots => this.pots = pots);
   }

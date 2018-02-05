@@ -1,23 +1,9 @@
+
 var id = 1;
 
-export class Pot {
+class Pot {
 
-  id: number;
-  name: string;
-  accountName: string;
-  balance: number;
-  target: number;
-  icon: string;
-  progress: number;
-  progressBarColor: string;
-  summaryActive: boolean;
-  depositFundsActive: boolean;
-  withdrawFundsActive: boolean;
-  settingsActive: boolean;
-  deleteActive: boolean;
-  preventWithdraw: boolean;
-
-  constructor(potDetails:any) {
+  constructor(potDetails) {
     this.id = id++;
     this.name = potDetails.name;
     this.accountName = potDetails.accountName;

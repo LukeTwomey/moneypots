@@ -1,6 +1,5 @@
 
-import { PotService } from './shared/pot.service';
-potService = new PotService;
+import * as potService from './shared/pot.service';
 
 // BASE SETUP
 // =============================================================================
@@ -37,7 +36,7 @@ router.get('/', function(req, res) {
 router.get('/pots', function(req, res) {
   console.log("Server: received request from the front-end...");
   console.log(potService.getPots());
-  // res.json();
+  res.json(potService.getPots());
 });
 
 // REGISTER OUR ROUTES -------------------------------

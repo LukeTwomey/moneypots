@@ -4,6 +4,7 @@
 /front-end/dist
 /front-end/tmp
 /front-end/out-tsc
+/back-end/dist
 
 # dependencies
 /front-end/node_modules

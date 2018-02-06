@@ -21,7 +21,7 @@
     </div>
 
     <div class="potDetailsContainer">
-      <h2 class="potBalance">£{{ pot.balance }}<span class="target"> / £{{ pot.target }}</span></h2>
+      <h2 class="potBalance">{{ pot.balance | currency:'GBP' }}<span class="target"> / {{ pot.target | currency:'GBP' }}</span></h2>
       <h3 class="potName">{{ pot.name }}</h3>
       <h4 class="accountName">{{ pot.accountName }}</h4>
     </div>
@@ -48,11 +48,11 @@
 
   <div class="withdrawFunds" *ngIf="pot.withdrawFundsActive">
     <form #form="ngForm" (ngSubmit)="pot.withdraw(withdrawalAmount.value)" novalidate>
-      <h2 class="potBalance">Current Balance £{{ pot.getBalance() }}</h2>
+      <h2 class="potBalance">Current Balance {{ pot.balance | currency:'GBP' }}</h2>
       <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
       <button (click)="pot.returnToSummary()">Cancel</button>
       <button type="submit" [disabled]="!form.valid">Withdraw</button>
-      <h3 class="preventWithdrawal" *ngIf="pot.preventWithdraw">The most you can withdraw is <span class="bold">£{{ pot.getBalance() }}</span></h3>
+      <h3 class="preventWithdrawal" *ngIf="pot.preventWithdraw">The most you can withdraw is <span class="bold">{{ pot.balance | currency:'GBP' }}</span></h3>
     </form>
   </div>
 

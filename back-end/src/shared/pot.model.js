@@ -20,18 +20,6 @@ class Pot {
     this.preventWithdraw = false;
   }
 
-  // Balance is stored as a number in the pot, but needs to be returned as 2 decimal point string, and then formatted
-  // to include commas for presenting to the user
-  getBalance() {
-    return this.numberWithCommas(this.balance.toFixed(2));
-  }
-
-  // Target is stored as a number in the pot, but needs to be returned as 2 decimal point string, and then formatted
-  // to include commas for presenting to the user
-  getTarget() {
-    return this.numberWithCommas(this.target.toFixed(2));
-  }
-
   deposit(depositAmount) {
     this.balance += parseFloat(depositAmount);
     this.updateProgressBar();
@@ -143,10 +131,6 @@ class Pot {
   deleteConfirm() {
     this.settingsActive = false;
     this.deleteActive = true;
-  }
-
-  numberWithCommas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
 }

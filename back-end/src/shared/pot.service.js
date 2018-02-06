@@ -6,7 +6,7 @@ var pots = [
     "id": 1,
     "name": "Holiday Fund",
     "accountName": "Halifax Current Account",
-    "balance": 478,
+    "balance": 4865.86578989090999999,
     "target": 2000,
     "icon": "assets/holiday.png",
     "progress": 0,

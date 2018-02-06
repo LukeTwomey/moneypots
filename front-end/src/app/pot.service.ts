@@ -9,7 +9,7 @@ export class PotService {
   constructor(private http: HttpClient) {}
 
   getPots(): Observable<any> {
-    return this.http.get('http://localhost:4100/api/pots')
+    return this.http.get('http://localhost:4100/api/pots/getPots')
       .do(data => console.log('Data returned from API: ' + JSON.stringify(data)));
   }
 

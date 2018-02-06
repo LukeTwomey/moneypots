@@ -33,9 +33,7 @@ router.get('/', function(req, res) {
 });
 
 // more routes for our API will happen here
-router.get('/pots', function(req, res) {
-  console.log("Server: received request from the front-end...");
-  console.log(potService.getPots());
+router.get('/pots/getPots', function(req, res) {
   res.json(potService.getPots());
 });
 

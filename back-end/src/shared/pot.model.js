@@ -51,10 +51,10 @@ class Pot {
     this.deleteActive = false;
   }
 
-  depositFunds() {
-    this.depositFundsActive = true;
-    this.summaryActive = false;
-  }
+  // depositFunds() {
+  //   this.depositFundsActive = true;
+  //   this.summaryActive = false;
+  // }
 
   withdrawFunds() {
     this.withdrawFundsActive = true;

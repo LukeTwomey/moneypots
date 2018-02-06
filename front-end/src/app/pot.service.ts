@@ -13,11 +13,12 @@ export class PotService {
       .do(data => console.log('Data returned from API: ' + JSON.stringify(data)));
   }
 
-  // createPot(potDetails) {
-  //   this.pots.push(new Pot(potDetails.value));
-  //   console.log("Service here. Added pot. Here is what I have now:");
-  //   console.log(this.pots);
-  // }
+  createPot(potDetails) {
+    // this.pots.push(new Pot(potDetails.value));
+    // console.log("Service here. Added pot. Here is what I have now:");
+    // console.log(this.pots);
+    this.http.post('http://localhost:4100/api/pots/createPot', potDetails.value);
+  }
 
   // deletePot(potId) {
   //   this.pots = this.pots.filter(function(el) {

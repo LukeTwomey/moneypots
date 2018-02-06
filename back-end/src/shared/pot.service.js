@@ -3,7 +3,7 @@ import { Pot } from './pot.model.js';
 
 var pots = [
   {
-    "id": 1,
+    "id": 0,
     "name": "Holiday Fund",
     "accountName": "Halifax Current Account",
     "balance": 4865.86578989090999999,
@@ -19,7 +19,7 @@ var pots = [
     "preventWithdraw": false,
   },
   {
-    "id": 2,
+    "id": 1,
     "name": "New Car",
     "accountName": "Monzo",
     "balance": 250.33,
@@ -38,4 +38,10 @@ var pots = [
 
 export function getPots(){
   return pots;
+}
+
+export function createPot(potDetails){
+  console.log("Back end service has been called...");
+  console.log(potDetails);
+  this.pots.push(new Pot(potDetails));
 }

@@ -21,6 +21,16 @@ export class PotComponent {
       .subscribe(pots => this.pots = pots);
   }
 
+  depositFunds(pot) {
+    console.log("You're calling me. Here's the pot ID I have: ");
+    console.log(pot.id);
+    console.log(this.pots);
+    this.pots[pot.id].depositFundsActive = true;
+    this.pots[pot.id].summaryActive = false;
+    // this.depositFundsActive = true;
+    // this.summaryActive = false;
+  }
+
   // createPot(potDetails) {
   //   this.potService.createPot(potDetails);
   //   this.addNewPotActive = false;

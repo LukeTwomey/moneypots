@@ -37,6 +37,12 @@ router.get('/pots/getPots', function(req, res) {
   res.json(potService.getPots());
 });
 
+router.post('/pots/createPot', function(req, res) {
+  console.log("API here. Create pot request received.");
+  console.log(req);
+  res.json(potService.createPot(req));
+});
+
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);

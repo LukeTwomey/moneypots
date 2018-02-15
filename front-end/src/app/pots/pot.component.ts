@@ -22,14 +22,21 @@ export class PotComponent {
   }
 
   depositFunds(pot) {
-    console.log("You're calling me. Here's the pot ID I have: ");
+    console.log("You're calling me to deposit. Here's the pot ID I have: ");
     console.log(pot.id);
     console.log(this.pots);
     this.pots[pot.id].depositFundsActive = true;
     this.pots[pot.id].summaryActive = false;
-    // this.depositFundsActive = true;
-    // this.summaryActive = false;
   }
+
+  withdrawFunds(pot) {
+    console.log("You're calling me to withdraw. Here's the pot ID I have: ");
+    console.log(pot.id);
+    console.log(this.pots);
+    this.pots[pot.id].withdrawFundsActive = true;
+    this.pots[pot.id].summaryActive = false;
+  }
+
 
   // createPot(potDetails) {
   //   this.potService.createPot(potDetails);

@@ -56,10 +56,10 @@ class Pot {
   //   this.summaryActive = false;
   // }
 
-  withdrawFunds() {
-    this.withdrawFundsActive = true;
-    this.summaryActive = false;
-  }
+  // withdrawFunds() {
+  //   this.withdrawFundsActive = true;
+  //   this.summaryActive = false;
+  // }
 
   changeSettings() {
     this.settingsActive = true;

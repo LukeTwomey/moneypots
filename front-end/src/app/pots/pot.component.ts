@@ -37,6 +37,13 @@ export class PotComponent {
     this.pots[pot.id].summaryActive = false;
   }
 
+  returnToSummary(pot) {
+    this.pots[pot.id].depositFundsActive = false;
+    this.pots[pot.id].withdrawFundsActive = false;
+    this.pots[pot.id].settingsActive = false;
+    this.pots[pot.id].summaryActive = true;
+    this.pots[pot.id].preventWithdraw = false;
+  }
 
   // createPot(potDetails) {
   //   this.potService.createPot(potDetails);

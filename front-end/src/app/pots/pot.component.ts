@@ -94,9 +94,10 @@ export class PotComponent {
   updateProgressBar(pot) {
 
     // Only update the progress bar if a pot target has been set
-    if(this.pots[pot.id] > 0) {
+    if(this.pots[pot.id].target > 0) {
 
-      var self = this.pots[pot.id];
+      var self = this;
+      var currentPot = this.pots[pot.id];
       var startPoint = this.pots[pot.id].progress;
       var endPoint;
       var progressBarDirection;
@@ -111,13 +112,13 @@ export class PotComponent {
       }
 
       if(endPoint == startPoint) { // No deposit or withdrawal has been made, and the pot target has not been changed
-        this.pots[pot.id].changeProgressBarColor();
+        this.changeProgressBarColor(pot);
         return
       } else if(endPoint > startPoint) { // Deposit made, or pot target reduced
         progressBarDirection = 'up';
       } else { // Withdrawal made, or pot target increased
         progressBarDirection = 'down';
-        this.pots[pot.id].changeProgressBarColor();
+        this.changeProgressBarColor(pot);
       }
 
       // Repeat setInterval until progress bar is in correct position
@@ -129,24 +130,23 @@ export class PotComponent {
           startPoint--;
         }
 
-        self.progress = startPoint;
+        currentPot.progress = startPoint;
 
-        if(self.progress == endPoint) {
+        if(currentPot.progress == endPoint) {
           clearInterval(interval);
-          self.changeProgressBarColor();
+          self.changeProgressBarColor(pot);
         }
       }, 15);
 
     }
   }
 
-  changeProgressBarColor() {
-    console.log("Change progress bar color being called...");
-    // if(this.balance >= this.target) {
-    //   this.progressBarColor = '#f8c40e';
-    // } else {
-    //   this.progressBarColor = '#06b127';
-    // }
+  changeProgressBarColor(pot) {
+    if(this.pots[pot.id].balance >= this.pots[pot.id].target) {
+      this.pots[pot.id].progressBarColor = '#f8c40e';
+    } else {
+      this.pots[pot.id].progressBarColor = '#06b127';
+    }
   }
 
 }

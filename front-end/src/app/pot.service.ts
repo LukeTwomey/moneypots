@@ -13,11 +13,10 @@ export class PotService {
       .do(data => console.log('Data returned from API: ' + JSON.stringify(data)));
   }
 
-  createPot(potDetails) {
+  createPot(potDetails): Observable<any> {
     // this.pots.push(new Pot(potDetails.value));
-    // console.log("Service here. Added pot. Here is what I have now:");
-    // console.log(this.pots);
-    this.http.post('http://localhost:4100/api/pots/createPot', potDetails.value);
+    console.log("Service here. Adding pot...");
+    return this.http.post('http://localhost:4100/api/pots/createPot', potDetails.value);
   }
 
   // deletePot(potId) {

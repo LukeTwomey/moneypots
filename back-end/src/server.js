@@ -39,7 +39,7 @@ router.get('/pots/getPots', function(req, res) {
 
 router.post('/pots/createPot', function(req, res) {
   console.log("API here. Create pot request received.");
-  console.log(req);
+  // console.log(req);
   res.json(potService.createPot(req));
 });
 

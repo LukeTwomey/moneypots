@@ -21,20 +21,38 @@ export class PotComponent {
       .subscribe(pots => this.pots = pots);
   }
 
+  createPot(potDetails) {
+    // console.log("Creating pot...");
+    // console.log(potDetails);
+    this.potService.createPot(potDetails)
+      .subscribe(pots => this.pots = pots);
+    this.addNewPotActive = false;
+  }
+
   depositFunds(pot) {
-    console.log("You're calling me to deposit. Here's the pot ID I have: ");
-    console.log(pot.id);
-    console.log(this.pots);
     this.pots[pot.id].depositFundsActive = true;
     this.pots[pot.id].summaryActive = false;
   }
 
+  deposit(pot, depositAmount) {
+    this.pots[pot.id].balance += parseFloat(depositAmount);
+    this.updateProgressBar(pot);
+    this.returnToSummary(pot);
+  }
+
   withdrawFunds(pot) {
-    console.log("You're calling me to withdraw. Here's the pot ID I have: ");
-    console.log(pot.id);
-    console.log(this.pots);
     this.pots[pot.id].withdrawFundsActive = true;
     this.pots[pot.id].summaryActive = false;
+  }
+
+  withdraw(pot, withdrawalAmount) {
+    if(this.pots[pot.id].balance - parseFloat(withdrawalAmount) >= 0) {
+      this.pots[pot.id].balance -= parseFloat(withdrawalAmount);
+      this.updateProgressBar(pot);
+      this.returnToSummary(pot);
+    } else {
+      this.pots[pot.id].preventWithdraw = true; // User should be prevented from withdrawing more than what is currently in the pot
+    }
   }
 
   returnToSummary(pot) {
@@ -51,7 +69,6 @@ export class PotComponent {
   }
 
   updateSettings(pot) {
-    console.log("Updating settings..." + pot.id);
     this.updateProgressBar(pot);
     this.returnToSummary(pot);
   }
@@ -67,11 +84,6 @@ export class PotComponent {
     this.pots[pot.id].settingsActive = true;
     this.pots[pot.id].deleteActive = false;
   }
-
-  // createPot(potDetails) {
-  //   this.potService.createPot(potDetails);
-  //   this.addNewPotActive = false;
-  // }
 
   deletePot(pot) {
     console.log("Deleting pot..." + pot.id);
@@ -126,6 +138,15 @@ export class PotComponent {
       }, 15);
 
     }
+  }
+
+  changeProgressBarColor() {
+    console.log("Change progress bar color being called...");
+    // if(this.balance >= this.target) {
+    //   this.progressBarColor = '#f8c40e';
+    // } else {
+    //   this.progressBarColor = '#06b127';
+    // }
   }
 
 }

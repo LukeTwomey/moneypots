@@ -39,7 +39,7 @@
   </div>
 
   <div class="depositFunds" *ngIf="pot.depositFundsActive">
-    <form #form="ngForm" (ngSubmit)="pot.deposit(depositAmount.value)" novalidate>
+    <form #form="ngForm" (ngSubmit)="deposit(pot, depositAmount.value)" novalidate>
       <input type="number" required placeholder="0.00" min="0" step=".01" name="depositAmount" ngModel #depositAmount>
       <button (click)="returnToSummary(pot)">Cancel</button>
       <button type="submit" [disabled]="!form.valid">Deposit</button>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="withdrawFunds" *ngIf="pot.withdrawFundsActive">
-    <form #form="ngForm" (ngSubmit)="pot.withdraw(withdrawalAmount.value)" novalidate>
+    <form #form="ngForm" (ngSubmit)="withdraw(pot, withdrawalAmount.value)" novalidate>
       <h2 class="potBalance">Current Balance {{ pot.balance | currency:'GBP' }}</h2>
       <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
       <button (click)="returnToSummary(pot)">Cancel</button>

@@ -6,7 +6,7 @@ var pots = [
     "id": 0,
     "name": "Holiday Fund",
     "accountName": "Halifax Current Account",
-    "balance": 4865.86578989090999999,
+    "balance": 4865.86,
     "target": 2000,
     "icon": "assets/holiday.png",
     "progress": 0,
@@ -43,5 +43,6 @@ export function getPots(){
 export function createPot(potDetails){
   console.log("Back end service has been called...");
   console.log(potDetails);
-  this.pots.push(new Pot(potDetails));
+  // pots.push(new Pot(potDetails));
+  var pot = new Pot(potDetails);
 }

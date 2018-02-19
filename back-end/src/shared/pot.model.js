@@ -20,28 +20,6 @@ class Pot {
     this.preventWithdraw = false;
   }
 
-  deposit(depositAmount) {
-    this.balance += parseFloat(depositAmount);
-    this.updateProgressBar();
-    this.returnToSummary();
-  }
-
-  withdraw(withdrawalAmount) {
-    if(this.balance - parseFloat(withdrawalAmount) >= 0) {
-      this.balance -= parseFloat(withdrawalAmount);
-      this.updateProgressBar();
-      this.returnToSummary();
-    } else {
-      this.preventWithdraw = true; // User should be prevented from withdrawing more than what is currently in the pot
-    }
-  }
-
-  changeProgressBarColor() {
-    if(this.balance >= this.target) {
-      this.progressBarColor = '#f8c40e';
-    } else {
-      this.progressBarColor = '#06b127';
-    }
-  }
-
 }
+
+export default Pot;

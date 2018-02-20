@@ -27,43 +27,22 @@ export class PotComponent {
     this.addNewPotActive = false;
   }
 
-  depositFunds(pot) {
-    this.pots[pot.id].depositFundsActive = true;
-    this.pots[pot.id].summaryActive = false;
-  }
-
   deposit(pot, depositAmount) {
-    this.pots[pot.id].balance += parseFloat(depositAmount);
+    var potToUpdate = this.getArrayIndex(pot);
+    this.pots[potToUpdate].balance += parseFloat(depositAmount);
     this.updateProgressBar(pot);
     this.returnToSummary(pot);
   }
 
-  withdrawFunds(pot) {
-    this.pots[pot.id].withdrawFundsActive = true;
-    this.pots[pot.id].summaryActive = false;
-  }
-
   withdraw(pot, withdrawalAmount) {
-    if(this.pots[pot.id].balance - parseFloat(withdrawalAmount) >= 0) {
-      this.pots[pot.id].balance -= parseFloat(withdrawalAmount);
+    var potToUpdate = this.getArrayIndex(pot);
+    if(this.pots[potToUpdate].balance - parseFloat(withdrawalAmount) >= 0) {
+      this.pots[potToUpdate].balance -= parseFloat(withdrawalAmount);
       this.updateProgressBar(pot);
       this.returnToSummary(pot);
     } else {
-      this.pots[pot.id].preventWithdraw = true; // User should be prevented from withdrawing more than what is currently in the pot
+      this.pots[potToUpdate].preventWithdraw = true; // User should be prevented from withdrawing more than what is currently in the pot
     }
-  }
-
-  returnToSummary(pot) {
-    this.pots[pot.id].depositFundsActive = false;
-    this.pots[pot.id].withdrawFundsActive = false;
-    this.pots[pot.id].settingsActive = false;
-    this.pots[pot.id].summaryActive = true;
-    this.pots[pot.id].preventWithdraw = false;
-  }
-
-  changeSettings(pot) {
-    this.pots[pot.id].settingsActive = true;
-    this.pots[pot.id].summaryActive = false;
   }
 
   updateSettings(pot) {
@@ -71,40 +50,29 @@ export class PotComponent {
     this.returnToSummary(pot);
   }
 
-  deleteConfirm(pot) {
-    this.pots[pot.id].settingsActive = false;
-    this.pots[pot.id].deleteActive = true;
-  }
-
-  returnToSettings(pot) {
-    this.pots[pot.id].depositFundsActive = false;
-    this.pots[pot.id].withdrawFundsActive = false;
-    this.pots[pot.id].settingsActive = true;
-    this.pots[pot.id].deleteActive = false;
-  }
-
   deletePot(potDetails) {
     this.potService.deletePot(potDetails)
       .subscribe(pots => this.pots = pots);
+      console.log(this.pots);
     //this.addNewPotActive = false;
   }
 
   updateProgressBar(pot) {
-
+    var potToUpdate = this.getArrayIndex(pot);
     // Only update the progress bar if a pot target has been set
-    if(this.pots[pot.id].target > 0) {
+    if(this.pots[potToUpdate].target > 0) {
 
       var self = this;
-      var currentPot = this.pots[pot.id];
-      var startPoint = this.pots[pot.id].progress;
+      var currentPot = this.pots[potToUpdate];
+      var startPoint = this.pots[potToUpdate].progress;
       var endPoint;
       var progressBarDirection;
 
       // Endpoint value is where the progress bar needs to end up
-      if(this.pots[pot.id].balance == 0) {
+      if(this.pots[potToUpdate].balance == 0) {
         endPoint = 0;
-      } else if(this.pots[pot.id].balance/this.pots[pot.id].target <= 1) {
-        endPoint = Math.round((this.pots[pot.id].balance/this.pots[pot.id].target) * 100);
+      } else if(this.pots[potToUpdate].balance/this.pots[potToUpdate].target <= 1) {
+        endPoint = Math.round((this.pots[potToUpdate].balance/this.pots[potToUpdate].target) * 100);
       } else {
         endPoint = 100;
       }
@@ -140,11 +108,63 @@ export class PotComponent {
   }
 
   changeProgressBarColor(pot) {
-    if(this.pots[pot.id].balance >= this.pots[pot.id].target) {
-      this.pots[pot.id].progressBarColor = '#f8c40e';
+    var potToUpdate = this.getArrayIndex(pot);
+    if(this.pots[potToUpdate].balance >= this.pots[potToUpdate].target) {
+      this.pots[potToUpdate].progressBarColor = '#f8c40e';
     } else {
-      this.pots[pot.id].progressBarColor = '#06b127';
+      this.pots[potToUpdate].progressBarColor = '#06b127';
     }
+  }
+
+  // Search the pots array and return the index for the pot object you want to update
+  getArrayIndex(pot) {
+    var potId = pot.id;
+    var potToUpdate = this.pots.findIndex(function(pot) {
+      return pot.id === potId;
+    })
+    return potToUpdate;
+  }
+
+  // State change methods
+  depositFunds(pot) {
+    var potToUpdate = this.getArrayIndex(pot);
+    this.pots[potToUpdate].depositFundsActive = true;
+    this.pots[potToUpdate].summaryActive = false;
+  }
+
+  withdrawFunds(pot) {
+    var potToUpdate = this.getArrayIndex(pot);
+    this.pots[potToUpdate].withdrawFundsActive = true;
+    this.pots[potToUpdate].summaryActive = false;
+  }
+
+  returnToSummary(pot) {
+    var potToUpdate = this.getArrayIndex(pot);
+    this.pots[potToUpdate].depositFundsActive = false;
+    this.pots[potToUpdate].withdrawFundsActive = false;
+    this.pots[potToUpdate].settingsActive = false;
+    this.pots[potToUpdate].summaryActive = true;
+    this.pots[potToUpdate].preventWithdraw = false;
+  }
+
+  changeSettings(pot) {
+    var potToUpdate = this.getArrayIndex(pot);
+    this.pots[potToUpdate].settingsActive = true;
+    this.pots[potToUpdate].summaryActive = false;
+  }
+
+  deleteConfirm(pot) {
+    var potToUpdate = this.getArrayIndex(pot);
+    this.pots[potToUpdate].settingsActive = false;
+    this.pots[potToUpdate].deleteActive = true;
+  }
+
+  returnToSettings(pot) {
+    var potToUpdate = this.getArrayIndex(pot);
+    this.pots[potToUpdate].depositFundsActive = false;
+    this.pots[potToUpdate].withdrawFundsActive = false;
+    this.pots[potToUpdate].settingsActive = true;
+    this.pots[potToUpdate].deleteActive = false;
   }
 
 }

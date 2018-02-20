@@ -47,12 +47,10 @@ export function createPot(potDetails){
 
 export function deletePot(potDetails){
   var potId = potDetails.id;
-
   // Get the array index for the pot object with the matching pot ID to delete
   var potToDelete = pots.findIndex(function(pot) {
     return pot.id === potId;
   })
-
   // Remove that element from the pots array
   pots.splice(potToDelete, 1);
   return pots;

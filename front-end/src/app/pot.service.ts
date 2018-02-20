@@ -16,6 +16,7 @@ export class PotService {
   createPot(potDetails): Observable<any> {
     // this.pots.push(new Pot(potDetails.value));
     console.log("Service here. Adding pot...");
+    console.log(potDetails.value);
     return this.http.post('http://localhost:4100/api/pots/createPot', potDetails.value);
   }
 

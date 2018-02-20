@@ -38,9 +38,10 @@ router.get('/pots/getPots', function(req, res) {
 });
 
 router.post('/pots/createPot', function(req, res) {
-  console.log("API here. Create pot request received.");
-  // console.log(req);
-  res.json(potService.createPot(req));
+  // console.log("API here. Create pot request received.");
+  // console.log(req.body);
+  // res.json(potService.createPot(req));
+  res.json(potService.createPot(req.body));
 });
 
 // REGISTER OUR ROUTES -------------------------------

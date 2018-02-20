@@ -22,8 +22,6 @@ export class PotComponent {
   }
 
   createPot(potDetails) {
-    // console.log("Creating pot...");
-    // console.log(potDetails);
     this.potService.createPot(potDetails)
       .subscribe(pots => this.pots = pots);
     this.addNewPotActive = false;

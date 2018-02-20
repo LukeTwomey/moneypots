@@ -1,5 +1,5 @@
 
-import { Pot } from './pot.model.js';
+import Pot from './pot.model.js';
 
 var pots = [
   {
@@ -42,7 +42,8 @@ export function getPots(){
 
 export function createPot(potDetails){
   console.log("Back end service has been called...");
-  console.log(potDetails);
-  // pots.push(new Pot(potDetails));
-  var pot = new Pot(potDetails);
+  // console.log(potDetails);
+  pots.push(new Pot(potDetails));
+  console.log(pots);
+  return pots;
 }

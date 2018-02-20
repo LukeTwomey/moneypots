@@ -41,9 +41,19 @@ export function getPots(){
 }
 
 export function createPot(potDetails){
-  console.log("Back end service has been called...");
-  // console.log(potDetails);
   pots.push(new Pot(potDetails));
-  console.log(pots);
+  return pots;
+}
+
+export function deletePot(potDetails){
+  var potId = potDetails.id;
+
+  // Get the array index for the pot object with the matching pot ID to delete
+  var potToDelete = pots.findIndex(function(pot) {
+    return pot.id === potId;
+  })
+
+  // Remove that element from the pots array
+  pots.splice(potToDelete, 1);
   return pots;
 }

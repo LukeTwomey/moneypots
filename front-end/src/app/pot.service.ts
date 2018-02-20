@@ -14,18 +14,11 @@ export class PotService {
   }
 
   createPot(potDetails): Observable<any> {
-    // this.pots.push(new Pot(potDetails.value));
-    console.log("Service here. Adding pot...");
-    console.log(potDetails.value);
     return this.http.post('http://localhost:4100/api/pots/createPot', potDetails.value);
   }
 
-  // deletePot(potId) {
-  //   this.pots = this.pots.filter(function(el) {
-  //       return el.id !== potId;
-  //   });
-  //   console.log("Service here. Deleted pot. Here is what I have now:");
-  //   console.log(this.pots);
-  // }
+  deletePot(potDetails): Observable<any> {
+    return this.http.post('http://localhost:4100/api/pots/deletePot', potDetails);
+  }
 
 }

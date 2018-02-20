@@ -83,10 +83,10 @@ export class PotComponent {
     this.pots[pot.id].deleteActive = false;
   }
 
-  deletePot(pot) {
-    console.log("Deleting pot..." + pot.id);
-    // this.potService.deletePot(potId);
-    // this.getPots();
+  deletePot(potDetails) {
+    this.potService.deletePot(potDetails)
+      .subscribe(pots => this.pots = pots);
+    //this.addNewPotActive = false;
   }
 
   updateProgressBar(pot) {

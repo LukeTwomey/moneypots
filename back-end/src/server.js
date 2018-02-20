@@ -27,21 +27,20 @@ var port = process.env.PORT || 4100;        // set our port
 // =============================================================================
 var router = express.Router();              // get an instance of the express Router
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });
 });
 
-// more routes for our API will happen here
 router.get('/pots/getPots', function(req, res) {
   res.json(potService.getPots());
 });
 
 router.post('/pots/createPot', function(req, res) {
-  // console.log("API here. Create pot request received.");
-  // console.log(req.body);
-  // res.json(potService.createPot(req));
   res.json(potService.createPot(req.body));
+});
+
+router.post('/pots/deletePot', function(req, res) {
+  res.json(potService.deletePot(req.body));
 });
 
 // REGISTER OUR ROUTES -------------------------------

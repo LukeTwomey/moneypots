@@ -43,6 +43,10 @@ router.post('/pots/deletePot', function(req, res) {
   res.json(potService.deletePot(req.body));
 });
 
+router.post('/pots/deposit', function(req, res) {
+  res.json(potService.deposit(req.body));
+});
+
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);

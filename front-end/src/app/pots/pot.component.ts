@@ -27,11 +27,11 @@ export class PotComponent {
     this.addNewPotActive = false;
   }
 
-  deposit(pot, depositAmount) {
-    var potToUpdate = this.getArrayIndex(pot);
-    this.pots[potToUpdate].balance += parseFloat(depositAmount);
-    this.updateProgressBar(pot);
-    this.returnToSummary(pot);
+  deposit(potDetails, depositAmount) {
+    this.potService.deposit(potDetails, depositAmount)
+      .subscribe(pots => this.pots = pots);
+    this.updateProgressBar(potDetails);
+    this.returnToSummary(potDetails);
   }
 
   withdraw(pot, withdrawalAmount) {

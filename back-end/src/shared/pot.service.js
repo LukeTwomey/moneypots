@@ -55,3 +55,14 @@ export function deletePot(potDetails){
   pots.splice(potToDelete, 1);
   return pots;
 }
+
+export function deposit(body){
+  var potId = body.potDetails.id;
+  var depositAmount = body.depositAmount;
+  // Get the array index for the pot object with the matching pot ID to delete
+  var potToUpdate = pots.findIndex(function(pot) {
+    return pot.id === potId;
+  })
+  pots[potToUpdate].balance += parseFloat(depositAmount);
+  return pots;
+}

@@ -46,23 +46,23 @@ export function createPot(potDetails){
 }
 
 export function deletePot(potDetails){
-  var potId = potDetails.id;
-  // Get the array index for the pot object with the matching pot ID to delete
-  var potToDelete = pots.findIndex(function(pot) {
-    return pot.id === potId;
-  })
-  // Remove that element from the pots array
+  var potToDelete = getArrayIndex(potDetails);
   pots.splice(potToDelete, 1);
   return pots;
 }
 
 export function deposit(body){
-  var potId = body.potDetails.id;
+  var potToUpdate = getArrayIndex(body.potDetails);
   var depositAmount = body.depositAmount;
-  // Get the array index for the pot object with the matching pot ID to delete
+  pots[potToUpdate].balance += parseFloat(depositAmount);
+  return pots;
+}
+
+// Search the pots array and return the index for the pot object you want to update
+function getArrayIndex(pot) {
+  var potId = pot.id;
   var potToUpdate = pots.findIndex(function(pot) {
     return pot.id === potId;
   })
-  pots[potToUpdate].balance += parseFloat(depositAmount);
-  return pots;
+  return potToUpdate;
 }

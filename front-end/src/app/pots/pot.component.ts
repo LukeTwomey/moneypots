@@ -34,12 +34,14 @@ export class PotComponent {
     this.returnToSummary(potDetails);
   }
 
-  withdraw(pot, withdrawalAmount) {
-    var potToUpdate = this.getArrayIndex(pot);
+  withdraw(potDetails, withdrawalAmount) {
+    var potToUpdate = this.getArrayIndex(potDetails);
     if(this.pots[potToUpdate].balance - parseFloat(withdrawalAmount) >= 0) {
-      this.pots[potToUpdate].balance -= parseFloat(withdrawalAmount);
-      this.updateProgressBar(pot);
-      this.returnToSummary(pot);
+      // this.pots[potToUpdate].balance -= parseFloat(withdrawalAmount);
+      this.potService.withdraw(potDetails, withdrawalAmount)
+        .subscribe(pots => this.pots = pots);
+      this.updateProgressBar(potDetails);
+      this.returnToSummary(potDetails);
     } else {
       this.pots[potToUpdate].preventWithdraw = true; // User should be prevented from withdrawing more than what is currently in the pot
     }

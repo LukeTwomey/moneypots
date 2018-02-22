@@ -58,6 +58,13 @@ export function deposit(body){
   return pots;
 }
 
+export function withdraw(body){
+  var potToUpdate = getArrayIndex(body.potDetails);
+  var withdrawalAmount = body.withdrawalAmount;
+  pots[potToUpdate].balance -= parseFloat(withdrawalAmount);
+  return pots;
+}
+
 // Search the pots array and return the index for the pot object you want to update
 function getArrayIndex(pot) {
   var potId = pot.id;

@@ -29,4 +29,12 @@ export class PotService {
     return this.http.post('http://localhost:4100/api/pots/deposit', body);
   }
 
+  withdraw(potDetails, withdrawalAmount): Observable<any> {
+    var body = {
+      potDetails: potDetails,
+      withdrawalAmount: withdrawalAmount
+    };
+    return this.http.post('http://localhost:4100/api/pots/withdraw', body);
+  }
+
 }

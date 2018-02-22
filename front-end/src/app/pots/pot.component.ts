@@ -37,7 +37,6 @@ export class PotComponent {
   withdraw(potDetails, withdrawalAmount) {
     var potToUpdate = this.getArrayIndex(potDetails);
     if(this.pots[potToUpdate].balance - parseFloat(withdrawalAmount) >= 0) {
-      // this.pots[potToUpdate].balance -= parseFloat(withdrawalAmount);
       this.potService.withdraw(potDetails, withdrawalAmount)
         .subscribe(pots => this.pots = pots);
       this.updateProgressBar(potDetails);
@@ -47,9 +46,11 @@ export class PotComponent {
     }
   }
 
-  updateSettings(pot) {
-    this.updateProgressBar(pot);
-    this.returnToSummary(pot);
+  updateSettings(potDetails) {
+    this.returnToSummary(potDetails);
+    this.potService.updateSettings(potDetails)
+      .subscribe(pots => this.pots = pots);
+    this.updateProgressBar(potDetails);
   }
 
   deletePot(potDetails) {

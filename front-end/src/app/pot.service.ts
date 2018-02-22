@@ -37,4 +37,8 @@ export class PotService {
     return this.http.post('http://localhost:4100/api/pots/withdraw', body);
   }
 
+  updateSettings(potDetails): Observable<any> {
+    return this.http.post('http://localhost:4100/api/pots/updateSettings', potDetails);
+  }
+
 }

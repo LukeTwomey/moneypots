@@ -65,6 +65,18 @@ export function withdraw(body){
   return pots;
 }
 
+export function updateSettings(potDetails){
+  var potToUpdate = getArrayIndex(potDetails);
+
+  // Loop through and replace each object value with the updated one from the front-end
+  for (var key in potDetails) {
+    var value = potDetails[key];
+    pots[potToUpdate][key] = value;
+  }
+
+  return pots;
+}
+
 // Search the pots array and return the index for the pot object you want to update
 function getArrayIndex(pot) {
   var potId = pot.id;

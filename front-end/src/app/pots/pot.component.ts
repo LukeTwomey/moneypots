@@ -49,7 +49,6 @@ export class PotComponent {
     this.returnToSummary(potDetails);
     this.potService.updateSettings(potDetails)
       .subscribe(pots => {this.pots = pots}, (err) => {}, () => {this.updateProgressBar(potDetails);});
-    this.updateProgressBar(potDetails);
   }
 
   deletePot(potDetails) {

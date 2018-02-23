@@ -18,8 +18,7 @@ export class PotComponent {
 
   getPots() {
     this.potService.getPots()
-      // .subscribe(pots => this.pots = pots);
-      .subscribe(pots => {this.pots = pots}, (err) => {}, () => {console.log(this.pots)});
+      .subscribe(pots => this.pots = pots);
   }
 
   createPot(potDetails) {
@@ -30,9 +29,7 @@ export class PotComponent {
 
   deposit(potDetails, depositAmount) {
     this.potService.deposit(potDetails, depositAmount)
-      // .subscribe(pots => this.pots = pots);
       .subscribe(pots => {this.pots = pots}, (err) => {}, () => {this.updateProgressBar(potDetails);});
-    // this.updateProgressBar(potDetails);
     this.returnToSummary(potDetails);
   }
 
@@ -40,7 +37,7 @@ export class PotComponent {
     var potToUpdate = this.getArrayIndex(potDetails);
     if(this.pots[potToUpdate].balance - parseFloat(withdrawalAmount) >= 0) {
       this.potService.withdraw(potDetails, withdrawalAmount)
-        .subscribe(pots => this.pots = pots);
+        .subscribe(pots => {this.pots = pots}, (err) => {}, () => {this.updateProgressBar(potDetails);});
       this.updateProgressBar(potDetails);
       this.returnToSummary(potDetails);
     } else {
@@ -51,24 +48,20 @@ export class PotComponent {
   updateSettings(potDetails) {
     this.returnToSummary(potDetails);
     this.potService.updateSettings(potDetails)
-      .subscribe(pots => this.pots = pots);
+      .subscribe(pots => {this.pots = pots}, (err) => {}, () => {this.updateProgressBar(potDetails);});
     this.updateProgressBar(potDetails);
   }
 
   deletePot(potDetails) {
     this.potService.deletePot(potDetails)
       .subscribe(pots => this.pots = pots);
-      console.log(this.pots);
-    //this.addNewPotActive = false;
   }
 
   updateProgressBar(pot) {
-    console.log("Yup, I'm firing...");
     var potToUpdate = this.getArrayIndex(pot);
-    console.log(this.pots[potToUpdate]);
+
     // Only update the progress bar if a pot target has been set
     if(this.pots[potToUpdate].target > 0) {
-      console.log("Getting in here too...");
 
       var self = this;
       var currentPot = this.pots[potToUpdate];

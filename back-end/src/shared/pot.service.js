@@ -79,18 +79,12 @@ export function updateSettings(potDetails){
 
 export function updateProgress(potDetails){
   var potToUpdate = getArrayIndex(potDetails);
-  console.log(potDetails.progress);
-  console.log(pots[potToUpdate].progress);
   pots[potToUpdate].progress = potDetails.progress;
-  console.log(pots[potToUpdate]);
 }
 
 export function updateProgressBarColor(potDetails){
   var potToUpdate = getArrayIndex(potDetails);
-  console.log(potDetails.progressBarColor);
-  console.log(pots[potToUpdate].progressBarColor);
   pots[potToUpdate].progressBarColor = potDetails.progressBarColor;
-  console.log(pots[potToUpdate]);
 }
 
 // Search the pots array and return the index for the pot object you want to update

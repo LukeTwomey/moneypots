@@ -41,4 +41,12 @@ export class PotService {
     return this.http.post('http://localhost:4100/api/pots/updateSettings', potDetails);
   }
 
+  updateProgress(potDetails): Observable<any> {
+    return this.http.post('http://localhost:4100/api/pots/updateProgress', potDetails);
+  }
+
+  updateProgressBarColor(potDetails): Observable<any> {
+    return this.http.post('http://localhost:4100/api/pots/updateProgressBarColor', potDetails);
+  }
+
 }

@@ -55,6 +55,14 @@ router.post('/pots/updateSettings', function(req, res) {
   res.json(potService.updateSettings(req.body));
 });
 
+router.post('/pots/updateProgress', function(req, res) {
+  res.json(potService.updateProgress(req.body));
+});
+
+router.post('/pots/updateProgressBarColor', function(req, res) {
+  res.json(potService.updateProgressBarColor(req.body));
+});
+
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);

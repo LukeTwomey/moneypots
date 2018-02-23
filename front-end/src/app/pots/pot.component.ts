@@ -18,7 +18,8 @@ export class PotComponent {
 
   getPots() {
     this.potService.getPots()
-      .subscribe(pots => this.pots = pots);
+      // .subscribe(pots => this.pots = pots);
+      .subscribe(pots => {this.pots = pots}, (err) => {}, () => {console.log(this.pots)});
   }
 
   createPot(potDetails) {
@@ -29,8 +30,9 @@ export class PotComponent {
 
   deposit(potDetails, depositAmount) {
     this.potService.deposit(potDetails, depositAmount)
-      .subscribe(pots => this.pots = pots);
-    this.updateProgressBar(potDetails);
+      // .subscribe(pots => this.pots = pots);
+      .subscribe(pots => {this.pots = pots}, (err) => {}, () => {this.updateProgressBar(potDetails);});
+    // this.updateProgressBar(potDetails);
     this.returnToSummary(potDetails);
   }
 
@@ -61,9 +63,12 @@ export class PotComponent {
   }
 
   updateProgressBar(pot) {
+    console.log("Yup, I'm firing...");
     var potToUpdate = this.getArrayIndex(pot);
+    console.log(this.pots[potToUpdate]);
     // Only update the progress bar if a pot target has been set
     if(this.pots[potToUpdate].target > 0) {
+      console.log("Getting in here too...");
 
       var self = this;
       var currentPot = this.pots[potToUpdate];
@@ -73,12 +78,17 @@ export class PotComponent {
 
       // Endpoint value is where the progress bar needs to end up
       if(this.pots[potToUpdate].balance == 0) {
-        endPoint = 0;
+        endPoint = 0; // Set the local variable
       } else if(this.pots[potToUpdate].balance/this.pots[potToUpdate].target <= 1) {
         endPoint = Math.round((this.pots[potToUpdate].balance/this.pots[potToUpdate].target) * 100);
       } else {
         endPoint = 100;
       }
+
+      // Update the pot progress in the array, so we can push it through to the back-end to keep track of
+      this.pots[potToUpdate].progress = endPoint;
+      this.potService.updateProgress(this.pots[potToUpdate])
+        .subscribe();
 
       if(endPoint == startPoint) { // No deposit or withdrawal has been made, and the pot target has not been changed
         this.changeProgressBarColor(pot);
@@ -117,6 +127,10 @@ export class PotComponent {
     } else {
       this.pots[potToUpdate].progressBarColor = '#06b127';
     }
+
+    // Update the pot progress bar colour in the back-end
+    this.potService.updateProgressBarColor(this.pots[potToUpdate])
+      .subscribe();
   }
 
   // Search the pots array and return the index for the pot object you want to update

@@ -15,7 +15,9 @@ var icons = [];
 // Read images (icons) directory contents and push into icons array, ready for front-end when it requests the data
 fs.readdir('./assets', (err, files) => {
   files.forEach(file => {
-    icons.push(file);
+    if( file.indexOf('.png') !== -1 ) {
+      icons.push(file);
+    }
   });
 })
 

@@ -167,7 +167,15 @@ input {
   margin-top: 0.5em;
 }
 
+.iconSelectContainer {
+  margin: 5px 0 10px 0;
+}
 
+.potSelectIcon {
+  width: 30px;
+  cursor: pointer;
+  margin: 0 5px;
+}
 
 
 

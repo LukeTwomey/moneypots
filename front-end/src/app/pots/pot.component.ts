@@ -9,17 +9,24 @@ import { PotService } from '../pot.service';
 export class PotComponent {
   apiUrl = 'http://localhost:4100/';
   pots = [];
+  icons = [];
   addNewPotActive = false;
 
   constructor(private potService: PotService) {}
 
   ngOnInit() {
     this.getPots();
+    this.getIcons();
   }
 
   getPots() {
     this.potService.getPots()
       .subscribe(pots => this.pots = pots);
+  }
+
+  getIcons() {
+    this.potService.getIcons()
+      .subscribe(icons => {this.icons = icons}, (err) => {}, () => {console.log(this.icons);});
   }
 
   createPot(potDetails) {

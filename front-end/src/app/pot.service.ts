@@ -12,6 +12,10 @@ export class PotService {
     return this.http.get('http://localhost:4100/api/pots/getPots');
   }
 
+  getIcons(): Observable<any> {
+    return this.http.get('http://localhost:4100/api/pots/getIcons');
+  }
+
   createPot(potDetails): Observable<any> {
     return this.http.post('http://localhost:4100/api/pots/createPot', potDetails.value);
   }

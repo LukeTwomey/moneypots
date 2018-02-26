@@ -8,6 +8,16 @@ import * as potService from './shared/pot.service';
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var fs         = require('fs');
+
+var icons = [];
+
+// Read images (icons) directory contents and push into icons array, ready for front-end when it requests the data
+fs.readdir('./assets', (err, files) => {
+  files.forEach(file => {
+    icons.push(file);
+  });
+})
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -31,11 +41,15 @@ var port = process.env.PORT || 4100;        // set our port
 var router = express.Router();              // get an instance of the express Router
 
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });
+  res.json({ message: 'hooray! welcome to our api!' });
 });
 
 router.get('/pots/getPots', function(req, res) {
   res.json(potService.getPots());
+});
+
+router.get('/pots/getIcons', function(req, res) {
+  res.json(icons);
 });
 
 router.post('/pots/createPot', function(req, res) {

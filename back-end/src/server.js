@@ -21,6 +21,9 @@ app.use(function(req, res, next) {
   next();
 });
 
+// create static route to allow express to server the static image files used for the pot icons
+app.use('/images', express.static('assets'));
+
 var port = process.env.PORT || 4100;        // set our port
 
 // ROUTES FOR OUR API
@@ -71,3 +74,5 @@ app.use('/api', router);
 // =============================================================================
 app.listen(port);
 console.log('Magic happens on port ' + port);
+
+// Output the icons stored on the server

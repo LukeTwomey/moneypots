@@ -7,6 +7,7 @@ import { PotService } from '../pot.service';
   templateUrl: './pot.component.html'
 })
 export class PotComponent {
+  apiUrl = 'http://localhost:4100/';
   pots = [];
   addNewPotActive = false;
 

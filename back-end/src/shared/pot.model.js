@@ -9,7 +9,7 @@ class Pot {
     this.accountName = potDetails.accountName;
     this.balance = 0;
     this.target = potDetails.target ? potDetails.target : 0;
-    this.icon = 'assets/holiday.png';
+    this.icon = potDetails.selectedIcon;
     this.progress = 0;
     this.progressBarColor = '#06b127';
     this.summaryActive = true;

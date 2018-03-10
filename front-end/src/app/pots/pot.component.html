@@ -7,9 +7,10 @@
     <input type="number" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target>
     <div class="iconSelectContainer">
       <div *ngFor="let icon of icons">
-        <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon"/>
+        <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon" (click)="selectIcon(icon)"/>
       </div>
     </div>
+    <input type="text" class="hidden" id="selectedIcon" name="selectedIcon" ngModel #selectedIcon [(ngModel)]="userSelectedIcon">
     <button (click)="addNewPotActive=false">Cancel</button>
     <button type="submit" [disabled]="!form.valid">Create</button>
   </form>

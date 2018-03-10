@@ -11,6 +11,7 @@ export class PotComponent {
   pots = [];
   icons = [];
   addNewPotActive = false;
+  userSelectedIcon = '';
 
   constructor(private potService: PotService) {}
 
@@ -140,6 +141,11 @@ export class PotComponent {
       return pot.id === potId;
     })
     return potToUpdate;
+  }
+
+  selectIcon(icon) {
+    // (<HTMLInputElement>document.getElementById("selectedIcon")).value = icon;
+    this.userSelectedIcon = icon;
   }
 
   // State change methods

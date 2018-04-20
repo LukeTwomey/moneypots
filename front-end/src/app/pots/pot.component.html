@@ -6,7 +6,7 @@
     <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName>
     <input type="number" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target>
     <div class="iconSelectContainer">
-      <div *ngFor="let icon of icons">
+      <div *ngFor="let icon of icons" [class.active]="icon === userSelectedIcon">
         <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon" (click)="selectIcon(icon)"/>
       </div>
     </div>

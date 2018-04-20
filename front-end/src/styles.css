@@ -73,6 +73,10 @@ button:hover,
   box-shadow: 0 2px 2px rgba(0,0,0,0.25);
 }
 
+.iconSelectContainer div.active {
+  box-shadow: 2px 2px 5px rgba(89,135,239,1);
+}
+
 button:disabled,
 button[disabled]{
   background: #dfdfdf;

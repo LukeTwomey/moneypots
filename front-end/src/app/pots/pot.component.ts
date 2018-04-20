@@ -31,6 +31,7 @@ export class PotComponent {
   }
 
   createPot(potDetails) {
+    console.log(potDetails.value);
     this.potService.createPot(potDetails)
       .subscribe(pots => this.pots = pots);
     this.addNewPotActive = false;
@@ -145,8 +146,11 @@ export class PotComponent {
   }
 
   selectIcon(icon) {
-    // (<HTMLInputElement>document.getElementById("selectedIcon")).value = icon;
     this.userSelectedIcon = icon;
+  }
+
+  updateIcon(icon) {
+    console.log("Updating icon...");
   }
 
   // State change methods

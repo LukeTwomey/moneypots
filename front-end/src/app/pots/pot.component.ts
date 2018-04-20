@@ -34,6 +34,7 @@ export class PotComponent {
     this.potService.createPot(potDetails)
       .subscribe(pots => this.pots = pots);
     this.addNewPotActive = false;
+    this.userSelectedIcon = '';
   }
 
   deposit(potDetails, depositAmount) {

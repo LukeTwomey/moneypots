@@ -68,8 +68,8 @@
       <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName [(ngModel)]="pot.accountName">
       <input type="number" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target [(ngModel)]="pot.target">
       <div class="iconSelectContainer">
-        <div *ngFor="let icon of icons" [class.active]="icon === pot.icon">
-          <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon" (click)="pot.icon = icon"/>
+        <div *ngFor="let icon of icons" [class.active]="icon === pot.icon" (click)="pot.icon = icon">
+          <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon"/>
         </div>
       </div>
       <input type="text" class="hidden" id="updatedIcon" name="updatedIcon" ngModel #updatedIcon [(ngModel)]="userUpdatedIcon">

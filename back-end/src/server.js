@@ -47,7 +47,9 @@ router.get('/', function(req, res) {
 });
 
 router.get('/pots/getPots', function(req, res) {
-  res.json(potService.getPots());
+  potService.getPots(function(result) {
+    res.json(result);
+  });
 });
 
 router.get('/pots/getIcons', function(req, res) {

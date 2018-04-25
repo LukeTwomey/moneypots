@@ -1,59 +1,44 @@
 
-import Pot from './pot.model.js';
+var mongoose = require('mongoose');
 
-var pots = [
-  {
-    "id": 0,
-    "name": "Holiday Fund",
-    "accountName": "Halifax Current Account",
-    "balance": 0,
-    "target": 2000,
-    "icon": "holiday.png",
-    "progress": 0,
-    "progressBarColor": "#06b127",
-    "summaryActive": true,
-    "depositFundsActive": false,
-    "withdrawFundsActive": false,
-    "settingsActive": false,
-    "deleteActive": false,
-    "preventWithdraw": false,
-  },
-  {
-    "id": 1,
-    "name": "New Car",
-    "accountName": "Monzo",
-    "balance": 0,
-    "target": 10000,
-    "icon": "car.png",
-    "progress": 0,
-    "progressBarColor": "#06b127",
-    "summaryActive": true,
-    "depositFundsActive": false,
-    "withdrawFundsActive": false,
-    "settingsActive": false,
-    "deleteActive": false,
-    "preventWithdraw": false,
-  },
-  {
-    "id": 2,
-    "name": "Mortgage Deposit",
-    "accountName": "Lloyds TSB",
-    "balance": 0,
-    "target": 50000,
-    "icon": "home.png",
-    "progress": 0,
-    "progressBarColor": "#06b127",
-    "summaryActive": true,
-    "depositFundsActive": false,
-    "withdrawFundsActive": false,
-    "settingsActive": false,
-    "deleteActive": false,
-    "preventWithdraw": false,
-  }
-];
+// MongoDB
+mongoose.Promise = global.Promise;
+var promise = mongoose.connect('mongodb://localhost/pots');
 
-export function getPots(){
-  return pots;
+promise.then(function(db) {
+  console.log('MONGO CONNECTED');
+}).catch(function(err) {
+  console.log('CONNECTION ERROR', err);
+});
+
+// Schema set up
+var potSchema = mongoose.Schema({
+  name: String,
+  accountName: String,
+  balance: Number,
+  target: Number,
+  icon: String,
+  progress: Number,
+  progressBarColor: String,
+  summaryActive: Boolean,
+  depositFundsActive: Boolean,
+  withdrawFundsActive: Boolean,
+  settingsActive: Boolean,
+  deleteActive: Boolean,
+  preventWithdraw: Boolean,
+});
+
+// Compile schema into a model
+var Pot = mongoose.model('Pot', potSchema);
+
+export function getPots(callback){
+  Pot.find({}, function(err, result) {
+    if (err) {
+      console.log(err);
+    } else if (result.length > 0) {
+      callback(result);
+    }
+  });
 }
 
 export function createPot(potDetails){

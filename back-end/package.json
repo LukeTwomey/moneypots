@@ -11,6 +11,8 @@
         "babel-preset-env": "^1.6.1",
         "body-parser": "~1.0.1",
         "express": "~4.0.0",
+        "mongodb": "^3.0.7",
+        "mongoose": "^5.0.15",
         "ms": "0.7.1",
         "qs": "1.0.0",
         "send": "0.11.1",

@@ -1,5 +1,6 @@
 
 var mongoose = require('mongoose');
+var ObjectId = require('mongodb').ObjectID;
 
 // MongoDB
 mongoose.Promise = global.Promise;
@@ -46,10 +47,13 @@ export function createPot(potDetails){
   return pots;
 }
 
-export function deletePot(potDetails){
-  var potToDelete = getArrayIndex(potDetails);
-  pots.splice(potToDelete, 1);
-  return pots;
+export function deletePot(potDetails, callback){
+  Pot.deleteOne({_id: ObjectId(potDetails._id)}, function(err, result) {
+    if (err) {
+    } else {
+      callback();
+    }
+  });
 }
 
 export function deposit(body){

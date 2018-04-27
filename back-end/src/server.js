@@ -60,8 +60,14 @@ router.post('/pots/createPot', function(req, res) {
   res.json(potService.createPot(req.body));
 });
 
+// First delete the pot, then when you have confirmation of deletion from the callback, 
+// get the remaining pots and return them to the front-end
 router.post('/pots/deletePot', function(req, res) {
-  res.json(potService.deletePot(req.body));
+  potService.deletePot(req.body, function() {
+    potService.getPots(function(result) {
+      res.json(result);
+    });
+  });
 });
 
 router.post('/pots/deposit', function(req, res) {

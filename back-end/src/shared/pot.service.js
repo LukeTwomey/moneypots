@@ -14,19 +14,19 @@ promise.then(function(db) {
 
 // Schema set up
 var potSchema = mongoose.Schema({
-  name: String,
-  accountName: String,
-  balance: Number,
-  target: Number,
-  icon: String,
-  progress: Number,
-  progressBarColor: String,
-  summaryActive: Boolean,
-  depositFundsActive: Boolean,
-  withdrawFundsActive: Boolean,
-  settingsActive: Boolean,
-  deleteActive: Boolean,
-  preventWithdraw: Boolean,
+  name: { type: String, default: '' },
+  accountName: { type: String, default: '' },
+  balance: { type: Number, default: 0 },
+  target: { type: Number, default: 0 },
+  icon: { type: String, default: '' },
+  progress: { type: Number, default: 0 },
+  progressBarColor: { type: String, default: '#06b127' },
+  summaryActive: { type: Boolean, default: true },
+  depositFundsActive: { type: Boolean, default: false },
+  withdrawFundsActive: { type: Boolean, default: false },
+  settingsActive: { type: Boolean, default: false },
+  deleteActive: { type: Boolean, default: false },
+  preventWithdraw: { type: Boolean, default: false },
 });
 
 // Compile schema into a model
@@ -42,9 +42,15 @@ export function getPots(callback){
   });
 }
 
-export function createPot(potDetails){
-  pots.push(new Pot(potDetails));
-  return pots;
+export function createPot(potDetails, callback){
+  var newPot = new Pot(potDetails);
+  newPot.save(function(err, result) {
+    if(err) {
+      console.log(err);
+    } else {
+      callback();
+    }
+  });
 }
 
 export function deletePot(potDetails, callback){

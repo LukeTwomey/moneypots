@@ -10,7 +10,7 @@
         <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon" (click)="selectIcon(icon)"/>
       </div>
     </div>
-    <input type="text" class="hidden" id="selectedIcon" name="selectedIcon" ngModel #selectedIcon [(ngModel)]="userSelectedIcon">
+    <input type="text" class="hidden" id="selectedIcon" name="icon" ngModel #selectedIcon [(ngModel)]="userSelectedIcon">
     <button (click)="addNewPotActive=false">Cancel</button>
     <button type="submit" [disabled]="!form.valid">Create</button>
   </form>

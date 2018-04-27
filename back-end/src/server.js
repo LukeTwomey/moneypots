@@ -57,7 +57,12 @@ router.get('/pots/getIcons', function(req, res) {
 });
 
 router.post('/pots/createPot', function(req, res) {
-  res.json(potService.createPot(req.body));
+  // res.json(potService.createPot(req.body));
+  potService.createPot(req.body, function() {
+    potService.getPots(function(result) {
+      res.json(result);
+    });
+  });
 });
 
 // First delete the pot, then when you have confirmation of deletion from the callback, 

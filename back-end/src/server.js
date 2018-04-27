@@ -57,7 +57,6 @@ router.get('/pots/getIcons', function(req, res) {
 });
 
 router.post('/pots/createPot', function(req, res) {
-  // res.json(potService.createPot(req.body));
   potService.createPot(req.body, function() {
     potService.getPots(function(result) {
       res.json(result);

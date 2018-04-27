@@ -36,7 +36,7 @@ export function getPots(callback){
   Pot.find({}, function(err, result) {
     if (err) {
       console.log(err);
-    } else if (result.length > 0) {
+    } else {
       callback(result);
     }
   });
@@ -56,6 +56,7 @@ export function createPot(potDetails, callback){
 export function deletePot(potDetails, callback){
   Pot.deleteOne({_id: ObjectId(potDetails._id)}, function(err, result) {
     if (err) {
+      console.log(err);
     } else {
       callback();
     }

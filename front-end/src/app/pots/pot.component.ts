@@ -137,9 +137,9 @@ export class PotComponent {
 
   // Search the pots array and return the index for the pot object you want to update
   getArrayIndex(pot) {
-    var potId = pot.id;
+    var potId = pot._id;
     var potToUpdate = this.pots.findIndex(function(pot) {
-      return pot.id === potId;
+      return pot._id === potId;
     })
     return potToUpdate;
   }

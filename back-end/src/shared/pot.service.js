@@ -37,8 +37,6 @@ export function getPots(callback){
     if (err) {
       console.log(err);
     } else {
-      console.log("Here are your pots:");
-      console.log(result);
       callback(result);
     }
   });
@@ -65,43 +63,35 @@ export function deletePot(potDetails, callback){
   });
 }
 
-export function deposit(body){
-  var potToUpdate = getArrayIndex(body.potDetails);
-  var depositAmount = body.depositAmount;
-  pots[potToUpdate].balance += parseFloat(depositAmount);
-  return pots;
+export function deposit(body, callback){
+  var depositAmount = parseFloat(body.depositAmount);
+  Pot.update(
+    {_id: ObjectId(body.potDetails._id)}, 
+    {$inc: {balance: depositAmount}},
+   function(err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      callback();
+    }
+  });
 }
 
-export function withdraw(body){
-  var potToUpdate = getArrayIndex(body.potDetails);
-  var withdrawalAmount = body.withdrawalAmount;
-  pots[potToUpdate].balance -= parseFloat(withdrawalAmount);
-  return pots;
+export function withdraw(body, callback){
+  var withdrawalAmount = - parseFloat(body.withdrawalAmount);
+  Pot.update(
+    {_id: ObjectId(body.potDetails._id)}, 
+    {$inc: {balance: withdrawalAmount}},
+   function(err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      callback();
+    }
+  });
 }
 
 export function updateSettings(potDetails, callback){
-  console.log("Update settings with these pot details:");
-  console.log(potDetails);
-  // var potToUpdate = getArrayIndex(potDetails);
-
-  // // Loop through and replace each object value with the updated one from the front-end
-  // for (var key in potDetails) {
-  //   var value = potDetails[key];
-  //   pots[potToUpdate][key] = value;
-  // }
-
-  // return pots;
-
-  // Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     console.log("I just tried to update the record in the database, and this is the result:");
-  //     console.log(result);
-  //     callback();
-  //   }
-  // });
-
   Pot.update(
     {_id: ObjectId(potDetails._id)}, 
     { 
@@ -123,62 +113,32 @@ export function updateSettings(potDetails, callback){
     if (err) {
       console.log(err);
     } else {
-      console.log("I just tried to update the record in the database, and this is the result:");
-      console.log(result);
       callback();
     }
   });
 }
 
 export function updateProgress(potDetails, callback){
-  console.log("Update progress");
-  // var potToUpdate = getArrayIndex(potDetails);
-  // pots[potToUpdate].progress = potDetails.progress;
-  // Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     callback();
-  //   }
-  // });  
   Pot.update(
     {_id: ObjectId(potDetails._id)}, 
-    { 
-      progress: potDetails.progress
-    },
+    {progress: potDetails.progress},
    function(err, result) {
     if (err) {
       console.log(err);
     } else {
-      console.log("I just tried to update the record's progress in the database, and this is the result:");
-      console.log(result);
       callback();
     }
   });
 }
 
 export function updateProgressBarColor(potDetails, callback){
-  console.log("Update progress bar colour");
-  // var potToUpdate = getArrayIndex(potDetails);
-  // pots[potToUpdate].progressBarColor = potDetails.progressBarColor;
-  // Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     callback();
-  //   }
-  // });  
   Pot.update(
     {_id: ObjectId(potDetails._id)}, 
-    { 
-      progressBarColor: potDetails.progressBarColor
-    },
+    {progressBarColor: potDetails.progressBarColor},
    function(err, result) {
     if (err) {
       console.log(err);
     } else {
-      console.log("I just tried to update the record's progress bar COLOUR in the database, and this is the result:");
-      console.log(result);
       callback();
     }
   });

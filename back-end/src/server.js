@@ -75,42 +75,40 @@ router.post('/pots/deletePot', function(req, res) {
 });
 
 router.post('/pots/deposit', function(req, res) {
-  res.json(potService.deposit(req.body));
+  potService.deposit(req.body, function() {
+    potService.getPots(function(result) {
+      res.json(result);
+    });
+  });
 });
 
 router.post('/pots/withdraw', function(req, res) {
-  res.json(potService.withdraw(req.body));
+  potService.withdraw(req.body, function() {
+    potService.getPots(function(result) {
+      res.json(result);
+    });
+  });
 });
 
 router.post('/pots/updateSettings', function(req, res) {
-  console.log("Here");
-  // res.json(potService.updateSettings(req.body));
   potService.updateSettings(req.body, function() {
-    console.log("Returning now...");
     potService.getPots(function(result) {
-      console.log("Found rest of pots...");
       res.json(result);
     });
   });
 });
 
 router.post('/pots/updateProgress', function(req, res) {
-  // res.json(potService.updateProgress(req.body));
   potService.updateProgress(req.body, function() {
-    console.log("Update progress returning now...");
     potService.getPots(function(result) {
-      console.log("Found rest of pots...");
       res.json(result);
     });
   });  
 });
 
 router.post('/pots/updateProgressBarColor', function(req, res) {
-  // res.json(potService.updateProgressBarColor(req.body));
   potService.updateProgressBarColor(req.body, function() {
-    console.log("Update progress bar colour returning now...");
     potService.getPots(function(result) {
-      console.log("Found rest of pots...");
       res.json(result);
     });
   });  
@@ -123,6 +121,4 @@ app.use('/api', router);
 // START THE SERVER
 // =============================================================================
 app.listen(port);
-console.log('Magic happens on port ' + port);
-
-// Output the icons stored on the server
+console.log('API now listening on port ' + port);

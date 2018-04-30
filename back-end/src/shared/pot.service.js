@@ -183,12 +183,3 @@ export function updateProgressBarColor(potDetails, callback){
     }
   });
 }
-
-// Search the pots array and return the index for the pot object you want to update
-function getArrayIndex(pot) {
-  var potId = pot.id;
-  var potToUpdate = pots.findIndex(function(pot) {
-    return pot.id === potId;
-  })
-  return potToUpdate;
-}

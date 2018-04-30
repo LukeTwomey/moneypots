@@ -92,7 +92,34 @@ export function updateSettings(potDetails, callback){
 
   // return pots;
 
-  Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+  // Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log("I just tried to update the record in the database, and this is the result:");
+  //     console.log(result);
+  //     callback();
+  //   }
+  // });
+
+  Pot.update(
+    {_id: ObjectId(potDetails._id)}, 
+    { 
+      name: potDetails.name,
+      accountName: potDetails.accountName,
+      balance: potDetails.balance,
+      target: potDetails.target,
+      icon: potDetails.icon,
+      progress: potDetails.progress,
+      progressBarColor: potDetails.progressBarColor,
+      summaryActive: potDetails.summaryActive,
+      depositFundsActive: potDetails.depositFundsActive,
+      withdrawFundsActive: potDetails.withdrawFundsActive,
+      settingsActive: potDetails.settingsActive,
+      deleteActive: potDetails.deleteActive,
+      preventWithdraw: potDetails.preventWithdraw
+    },
+   function(err, result) {
     if (err) {
       console.log(err);
     } else {
@@ -107,26 +134,54 @@ export function updateProgress(potDetails, callback){
   console.log("Update progress");
   // var potToUpdate = getArrayIndex(potDetails);
   // pots[potToUpdate].progress = potDetails.progress;
-  Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+  // Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     callback();
+  //   }
+  // });  
+  Pot.update(
+    {_id: ObjectId(potDetails._id)}, 
+    { 
+      progress: potDetails.progress
+    },
+   function(err, result) {
     if (err) {
       console.log(err);
     } else {
+      console.log("I just tried to update the record's progress in the database, and this is the result:");
+      console.log(result);
       callback();
     }
-  });  
+  });
 }
 
 export function updateProgressBarColor(potDetails, callback){
   console.log("Update progress bar colour");
   // var potToUpdate = getArrayIndex(potDetails);
   // pots[potToUpdate].progressBarColor = potDetails.progressBarColor;
-  Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+  // Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     callback();
+  //   }
+  // });  
+  Pot.update(
+    {_id: ObjectId(potDetails._id)}, 
+    { 
+      progressBarColor: potDetails.progressBarColor
+    },
+   function(err, result) {
     if (err) {
       console.log(err);
     } else {
+      console.log("I just tried to update the record's progress bar COLOUR in the database, and this is the result:");
+      console.log(result);
       callback();
     }
-  });  
+  });
 }
 
 // Search the pots array and return the index for the pot object you want to update

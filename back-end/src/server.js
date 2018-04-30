@@ -83,15 +83,37 @@ router.post('/pots/withdraw', function(req, res) {
 });
 
 router.post('/pots/updateSettings', function(req, res) {
-  res.json(potService.updateSettings(req.body));
+  console.log("Here");
+  // res.json(potService.updateSettings(req.body));
+  potService.updateSettings(req.body, function() {
+    console.log("Returning now...");
+    potService.getPots(function(result) {
+      console.log("Found rest of pots...");
+      res.json(result);
+    });
+  });
 });
 
 router.post('/pots/updateProgress', function(req, res) {
-  res.json(potService.updateProgress(req.body));
+  // res.json(potService.updateProgress(req.body));
+  potService.updateProgress(req.body, function() {
+    console.log("Update progress returning now...");
+    potService.getPots(function(result) {
+      console.log("Found rest of pots...");
+      res.json(result);
+    });
+  });  
 });
 
 router.post('/pots/updateProgressBarColor', function(req, res) {
-  res.json(potService.updateProgressBarColor(req.body));
+  // res.json(potService.updateProgressBarColor(req.body));
+  potService.updateProgressBarColor(req.body, function() {
+    console.log("Update progress bar colour returning now...");
+    potService.getPots(function(result) {
+      console.log("Found rest of pots...");
+      res.json(result);
+    });
+  });  
 });
 
 // REGISTER OUR ROUTES -------------------------------

@@ -67,7 +67,10 @@ export class PotComponent {
   }
 
   updateProgressBar(pot) {
+    console.log("Updating progress bar");
+    console.log(pot);
     var potToUpdate = this.getArrayIndex(pot);
+    console.log("Pot index to update:" + potToUpdate);
 
     // Only update the progress bar if a pot target has been set
     if(this.pots[potToUpdate].target > 0) {
@@ -137,10 +140,15 @@ export class PotComponent {
 
   // Search the pots array and return the index for the pot object you want to update
   getArrayIndex(pot) {
+    console.log("get array index here");
+    console.log(pot);
     var potId = pot._id;
+    console.log(potId);
+    console.log(this.pots);
     var potToUpdate = this.pots.findIndex(function(pot) {
       return pot._id === potId;
     })
+    console.log(potToUpdate);
     return potToUpdate;
   }
 

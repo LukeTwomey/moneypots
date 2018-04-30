@@ -37,6 +37,8 @@ export function getPots(callback){
     if (err) {
       console.log(err);
     } else {
+      console.log("Here are your pots:");
+      console.log(result);
       callback(result);
     }
   });
@@ -77,26 +79,54 @@ export function withdraw(body){
   return pots;
 }
 
-export function updateSettings(potDetails){
-  var potToUpdate = getArrayIndex(potDetails);
+export function updateSettings(potDetails, callback){
+  console.log("Update settings with these pot details:");
+  console.log(potDetails);
+  // var potToUpdate = getArrayIndex(potDetails);
 
-  // Loop through and replace each object value with the updated one from the front-end
-  for (var key in potDetails) {
-    var value = potDetails[key];
-    pots[potToUpdate][key] = value;
-  }
+  // // Loop through and replace each object value with the updated one from the front-end
+  // for (var key in potDetails) {
+  //   var value = potDetails[key];
+  //   pots[potToUpdate][key] = value;
+  // }
 
-  return pots;
+  // return pots;
+
+  Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("I just tried to update the record in the database, and this is the result:");
+      console.log(result);
+      callback();
+    }
+  });
 }
 
-export function updateProgress(potDetails){
-  var potToUpdate = getArrayIndex(potDetails);
-  pots[potToUpdate].progress = potDetails.progress;
+export function updateProgress(potDetails, callback){
+  console.log("Update progress");
+  // var potToUpdate = getArrayIndex(potDetails);
+  // pots[potToUpdate].progress = potDetails.progress;
+  Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      callback();
+    }
+  });  
 }
 
-export function updateProgressBarColor(potDetails){
-  var potToUpdate = getArrayIndex(potDetails);
-  pots[potToUpdate].progressBarColor = potDetails.progressBarColor;
+export function updateProgressBarColor(potDetails, callback){
+  console.log("Update progress bar colour");
+  // var potToUpdate = getArrayIndex(potDetails);
+  // pots[potToUpdate].progressBarColor = potDetails.progressBarColor;
+  Pot.update({_id: ObjectId(potDetails._id)}, {potDetails}, function(err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      callback();
+    }
+  });  
 }
 
 // Search the pots array and return the index for the pot object you want to update

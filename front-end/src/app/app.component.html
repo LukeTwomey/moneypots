@@ -1,0 +1,26 @@
+<button class="addPot" (click)="addNewPotActive=true">Create Pot</button>
+
+<div class="addPotContainer container" *ngIf=addNewPotActive>
+    <form #form="ngForm" (ngSubmit)="createPot(form)" novalidate>
+      <input type="text" required placeholder="Pot name" name="name" ngModel #potName>
+      <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName>
+      <input type="number" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target>
+      <div class="iconSelectContainer">
+        <div *ngFor="let icon of icons" [class.active]="icon === userSelectedIcon">
+          <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon" (click)="selectIcon(icon)"/>
+        </div>
+      </div>
+      <input type="text" class="hidden" id="selectedIcon" name="icon" ngModel #selectedIcon [(ngModel)]="userSelectedIcon">
+      <button (click)="addNewPotActive=false">Cancel</button>
+      <button type="submit" [disabled]="!form.valid">Create</button>
+    </form>
+  </div>
+
+<pots-list [pots]="pots" [apiUrl]="apiUrl" [icons]="icons" (submitDeposit)="deposit($event)" 
+  (submitWithdrawal)="withdraw($event)" (submitSettings)="updateSettings($event)" 
+  (submitSettingsConfirm)="changeSettings($event)" (submitDelete)="deletePot($event)" 
+  (submitProgress)="updateProgressBar($event)" (submitProgressColor)="changeProgressBarColor($event)"
+  (stateDepositFunds)="depositFunds($event)" (stateWithdrawFunds)="withdrawFunds($event)"
+  (stateReturnToSummary)="returnToSummary($event)" (stateDeleteConfirm)="deleteConfirm($event)"
+  (stateReturnToSettings)="returnToSettings($event)">
+</pots-list>

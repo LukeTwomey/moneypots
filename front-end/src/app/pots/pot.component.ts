@@ -1,13 +1,12 @@
-// import { Observable } from "rxjs/Observable";
+
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-// import { PotService } from '../pot.service';
 
 @Component({
   selector: 'pots-list',
   templateUrl: './pot.component.html'
 })
 export class PotComponent {
-  // constructor(private potService: PotService) {}
+
   @Input() pots:any;
   @Input() apiUrl:any;
   @Input() icons:any;

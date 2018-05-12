@@ -10,7 +10,7 @@ import { PotService } from './pot.service';
 export class AppComponent {
   constructor(private potService: PotService) {}
 
-  apiUrl = 'http://localhost:4100/';
+  apiUrl = 'https://moneypots-api.herokuapp.com/';
   pots = [];
   addNewPotActive = false;
   userSelectedIcon = '';

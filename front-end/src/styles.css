@@ -91,6 +91,10 @@ button[disabled]{
 }
 
 input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 2px;
+  border: 1px solid #C7C7C7;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 1.3em;

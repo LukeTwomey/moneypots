@@ -29,7 +29,7 @@
 
   <div class="depositFunds" *ngIf="pot.depositFundsActive">
     <form #form="ngForm" (ngSubmit)="deposit(pot, depositAmount.value)" novalidate>
-      <input type="number" required placeholder="0.00" min="0" step=".01" name="depositAmount" ngModel #depositAmount>
+      <input type="number" pattern="[0-9]*" required placeholder="0.00" min="0" step=".01" name="depositAmount" ngModel #depositAmount>
       <button type="button" (click)="returnToSummary(pot)">Cancel</button>
       <button type="submit" [disabled]="!form.valid">Deposit</button>
     </form>
@@ -38,7 +38,7 @@
   <div class="withdrawFunds" *ngIf="pot.withdrawFundsActive">
     <form #form="ngForm" (ngSubmit)="withdraw(pot, withdrawalAmount.value)" novalidate>
       <h2 class="potBalance">Current Balance {{ pot.balance | currency:'GBP' }}</h2>
-      <input type="number" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
+      <input type="number" pattern="[0-9]*" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
       <button type="button" (click)="returnToSummary(pot)">Cancel</button>
       <button type="submit" [disabled]="!form.valid">Withdraw</button>
       <h3 class="preventWithdrawal" *ngIf="pot.preventWithdraw">The most you can withdraw is <span class="bold">{{ pot.balance | currency:'GBP' }}</span></h3>
@@ -49,7 +49,7 @@
     <form #form="ngForm" (ngSubmit)="updateSettings(pot)" novalidate>
       <input type="text" required placeholder="Pot name" name="name" ngModel #potName [(ngModel)]="pot.name">
       <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName [(ngModel)]="pot.accountName">
-      <input type="number" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target [(ngModel)]="pot.target">
+      <input type="number" pattern="[0-9]*" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target [(ngModel)]="pot.target">
       <div class="iconSelectContainer">
         <div *ngFor="let icon of icons" [class.active]="icon === pot.icon" (click)="pot.icon = icon">
           <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon"/>

@@ -4,7 +4,7 @@
     <form #form="ngForm" (ngSubmit)="createPot(form)" novalidate>
       <input type="text" required placeholder="Pot name" name="name" ngModel #potName>
       <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName>
-      <input type="number" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target>
+      <input type="number" pattern="[0-9]*" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target>
       <div class="iconSelectContainer">
         <div *ngFor="let icon of icons" [class.active]="icon === userSelectedIcon">
           <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon" (click)="selectIcon(icon)"/>

@@ -1,74 +1,75 @@
 
-<div class="pot container" *ngFor="let pot of pots.reverse()">
-  <div class="summary" *ngIf="pot.summaryActive">
-    <div class="set" (click)="changeSettings(pot)">
-    <button type="button" class="settings fas fa-cog" ></button>
-    </div>
-
-    <div class="iconContainer">
-      <img class="potIcon" [src]="apiUrl + 'images/' + pot.icon"/>
-    </div>
-
-    <div class="potDetailsContainer">
-      <h2 class="potBalance">{{ pot.balance | currency:'GBP' }}<span class="target"> / {{ pot.target | currency:'GBP' }}</span></h2>
-      <h3 class="potName">{{ pot.name }}</h3>
-      <h4 class="accountName">{{ pot.accountName }}</h4>
-    </div>
-
-    <div class="progressAndTarget">
-      <div class="progress">
-        <div class="progressBar" id="progressBar" [style.width.%]="pot.progress" [style.background]="pot.progressBarColor"></div>
+<div class="pot-holder">
+  <div class="pot container" *ngFor="let pot of pots.reverse()">
+    <div class="summary" *ngIf="pot.summaryActive">
+      <div class="set" (click)="changeSettings(pot)">
+      <button type="button" class="settings fas fa-cog" ></button>
       </div>
-    </div>
 
-    <div class="buttonContainer">
-      <button type="button" (click)="depositFunds(pot)">Deposit</button>
-      <button type="button" (click)="withdrawFunds(pot)">Withdraw</button>
-    </div>
-  </div>
+      <div class="iconContainer">
+        <img class="potIcon" [src]="apiUrl + 'images/' + pot.icon"/>
+      </div>
 
-  <div class="depositFunds" *ngIf="pot.depositFundsActive">
-    <form #form="ngForm" (ngSubmit)="deposit(pot, depositAmount.value)" novalidate>
-      <input type="number" pattern="[0-9]*" required placeholder="0.00" min="0" step=".01" name="depositAmount" ngModel #depositAmount>
-      <button type="button" (click)="returnToSummary(pot)">Cancel</button>
-      <button type="submit" [disabled]="!form.valid">Deposit</button>
-    </form>
-  </div>
+      <div class="potDetailsContainer">
+        <h2 class="potBalance">{{ pot.balance | currency:'GBP' }}<span class="target"> / {{ pot.target | currency:'GBP' }}</span></h2>
+        <h3 class="potName">{{ pot.name }}</h3>
+        <h4 class="accountName">{{ pot.accountName }}</h4>
+      </div>
 
-  <div class="withdrawFunds" *ngIf="pot.withdrawFundsActive">
-    <form #form="ngForm" (ngSubmit)="withdraw(pot, withdrawalAmount.value)" novalidate>
-      <h2 class="potBalance">Current Balance {{ pot.balance | currency:'GBP' }}</h2>
-      <input type="number" pattern="[0-9]*" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
-      <button type="button" (click)="returnToSummary(pot)">Cancel</button>
-      <button type="submit" [disabled]="!form.valid">Withdraw</button>
-      <h3 class="preventWithdrawal" *ngIf="pot.preventWithdraw">The most you can withdraw is <span class="bold">{{ pot.balance | currency:'GBP' }}</span></h3>
-    </form>
-  </div>
-
-  <div class="potSettings" *ngIf="pot.settingsActive">
-    <form #form="ngForm" (ngSubmit)="updateSettings(pot)" novalidate>
-      <input type="text" required placeholder="Pot name" name="name" ngModel #potName [(ngModel)]="pot.name">
-      <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName [(ngModel)]="pot.accountName">
-      <input type="number" pattern="[0-9]*" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target [(ngModel)]="pot.target">
-      <div class="iconSelectContainer">
-        <div *ngFor="let icon of icons" [class.active]="icon === pot.icon" (click)="pot.icon = icon">
-          <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon"/>
+      <div class="progressAndTarget">
+        <div class="progress">
+          <div class="progressBar" id="progressBar" [style.width.%]="pot.progress" [style.background]="pot.progressBarColor"></div>
         </div>
       </div>
-      <input type="text" class="hidden" id="updatedIcon" name="updatedIcon" ngModel #updatedIcon [(ngModel)]="userUpdatedIcon">
-      <button type="button" (click)="returnToSummary(pot)">Cancel</button>
-      <button type="submit" [disabled]="!form.valid">Update</button>
-      <button type="button" class="delete" (click)="deleteConfirm(pot)">Delete Pot</button>
-    </form>
-  </div>
 
-  <div class="deleteConfirm" *ngIf="pot.deleteActive">
-    <h2>Warning!</h2>
-    <h3>This action cannot be undone. Are you absolutely certain you want to delete this pot?</h3>
-    <form #form="ngForm" (ngSubmit)="deletePot(pot)" novalidate>
-      <button type="button" (click)="returnToSettings(pot)">Cancel</button>
-      <button type="submit" class="delete">Yes, Delete Pot</button>
-    </form>
+      <div class="buttonContainer">
+        <button type="button" (click)="depositFunds(pot)">Deposit</button>
+        <button type="button" (click)="withdrawFunds(pot)">Withdraw</button>
+      </div>
+    </div>
+
+    <div class="depositFunds" *ngIf="pot.depositFundsActive">
+      <form #form="ngForm" (ngSubmit)="deposit(pot, depositAmount.value)" novalidate>
+        <input type="number" pattern="[0-9]*" required placeholder="0.00" min="0" step=".01" name="depositAmount" ngModel #depositAmount>
+        <button type="button" (click)="returnToSummary(pot)">Cancel</button>
+        <button type="submit" [disabled]="!form.valid">Deposit</button>
+      </form>
+    </div>
+
+    <div class="withdrawFunds" *ngIf="pot.withdrawFundsActive">
+      <form #form="ngForm" (ngSubmit)="withdraw(pot, withdrawalAmount.value)" novalidate>
+        <h2 class="potBalance">Current Balance {{ pot.balance | currency:'GBP' }}</h2>
+        <input type="number" pattern="[0-9]*" required placeholder="0.00" min="0" step=".01" name="withdrawalAmount" ngModel #withdrawalAmount>
+        <button type="button" (click)="returnToSummary(pot)">Cancel</button>
+        <button type="submit" [disabled]="!form.valid">Withdraw</button>
+        <h3 class="preventWithdrawal" *ngIf="pot.preventWithdraw">The most you can withdraw is <span class="bold">{{ pot.balance | currency:'GBP' }}</span></h3>
+      </form>
+    </div>
+
+    <div class="potSettings" *ngIf="pot.settingsActive">
+      <form #form="ngForm" (ngSubmit)="updateSettings(pot)" novalidate>
+        <input type="text" required placeholder="Pot name" name="name" ngModel #potName [(ngModel)]="pot.name">
+        <input type="text" required placeholder="Account name" name="accountName" ngModel #accountName [(ngModel)]="pot.accountName">
+        <input type="number" pattern="[0-9]*" placeholder="Target E.G. £1000" min="0" step=".01" name="target" ngModel #target [(ngModel)]="pot.target">
+        <div class="iconSelectContainer">
+          <div *ngFor="let icon of icons" [class.active]="icon === pot.icon" (click)="pot.icon = icon">
+            <img class="potSelectIcon" [src]="apiUrl + 'images/' + icon"/>
+          </div>
+        </div>
+        <input type="text" class="hidden" id="updatedIcon" name="updatedIcon" ngModel #updatedIcon [(ngModel)]="userUpdatedIcon">
+        <button type="button" (click)="returnToSummary(pot)">Cancel</button>
+        <button type="submit" [disabled]="!form.valid">Update</button>
+        <button type="button" class="delete" (click)="deleteConfirm(pot)">Delete Pot</button>
+      </form>
+    </div>
+
+    <div class="deleteConfirm" *ngIf="pot.deleteActive">
+      <h2>Warning!</h2>
+      <h3>This action cannot be undone. Are you absolutely certain you want to delete this pot?</h3>
+      <form #form="ngForm" (ngSubmit)="deletePot(pot)" novalidate>
+        <button type="button" (click)="returnToSettings(pot)">Cancel</button>
+        <button type="submit" class="delete">Yes, Delete Pot</button>
+      </form>
+    </div>
   </div>
 </div>
-

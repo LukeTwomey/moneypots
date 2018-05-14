@@ -199,6 +199,35 @@ input {
   width: 100%;
 }
 
+pots-list {
+  display: block;
+  text-align: center;
+}
 
+.pot-holder {
+  display: inline-block;
+  max-width: 400px;
+}
+
+.addPotContainer.container {
+  float: none;
+}
+
+@media screen and (min-width: 700px) {
+  
+  .addPot {
+    margin: 2em auto 1em auto;
+  }
+
+  .pot-holder {
+    max-width: 666px;
+  }
+
+  .container {
+    float: left;
+    margin: 1em;
+  }
+
+}
 
 

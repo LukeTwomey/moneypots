@@ -1,9 +1,9 @@
 {
     "name": "node-api",
-    "main": "server.js",
+    "main": "back-end/dist/server.js",
     "scripts": {
         "build": "babel src -d dist",
-        "start": "npm run build && node dist/server.js"
+        "start": "node back-end/dist/server.js"
     },
     "dependencies": {
         "babel-core": "^6.26.0",

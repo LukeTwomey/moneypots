@@ -9,19 +9,19 @@ export class PotService {
   constructor(private http: HttpClient) {}
 
   getPots(): Observable<any> {
-    return this.http.get('http://localhost:4100/api/pots/getPots');
+    return this.http.get('https://moneypots-api.herokuapp.com/api/pots/getPots');
   }
 
   getIcons(): Observable<any> {
-    return this.http.get('http://localhost:4100/api/pots/getIcons');
+    return this.http.get('https://moneypots-api.herokuapp.com/api/pots/getIcons');
   }
 
   createPot(potDetails): Observable<any> {
-    return this.http.post('http://localhost:4100/api/pots/createPot', potDetails.value);
+    return this.http.post('https://moneypots-api.herokuapp.com/api/pots/createPot', potDetails.value);
   }
 
   deletePot(potDetails): Observable<any> {
-    return this.http.post('http://localhost:4100/api/pots/deletePot', potDetails);
+    return this.http.post('https://moneypots-api.herokuapp.com/api/pots/deletePot', potDetails);
   }
 
   deposit(potDetails, depositAmount): Observable<any> {
@@ -29,7 +29,7 @@ export class PotService {
       potDetails: potDetails,
       depositAmount: depositAmount
     };
-    return this.http.post('http://localhost:4100/api/pots/deposit', body);
+    return this.http.post('https://moneypots-api.herokuapp.com/api/pots/deposit', body);
   }
 
   withdraw(potDetails, withdrawalAmount): Observable<any> {
@@ -37,19 +37,19 @@ export class PotService {
       potDetails: potDetails,
       withdrawalAmount: withdrawalAmount
     };
-    return this.http.post('http://localhost:4100/api/pots/withdraw', body);
+    return this.http.post('https://moneypots-api.herokuapp.com/api/pots/withdraw', body);
   }
 
   updateSettings(potDetails): Observable<any> {
-    return this.http.post('http://localhost:4100/api/pots/updateSettings', potDetails);
+    return this.http.post('https://moneypots-api.herokuapp.com/api/pots/updateSettings', potDetails);
   }
 
   updateProgress(potDetails): Observable<any> {
-    return this.http.post('http://localhost:4100/api/pots/updateProgress', potDetails);
+    return this.http.post('https://moneypots-api.herokuapp.com/api/pots/updateProgress', potDetails);
   }
 
   updateProgressBarColor(potDetails): Observable<any> {
-    return this.http.post('http://localhost:4100/api/pots/updateProgressBarColor', potDetails);
+    return this.http.post('https://moneypots-api.herokuapp.com/api/pots/updateProgressBarColor', potDetails);
   }
 
 }

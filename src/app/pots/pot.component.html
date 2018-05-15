@@ -1,6 +1,6 @@
 
 <div class="pot-holder">
-  <div class="pot container" *ngFor="let pot of pots.reverse()">
+  <div class="pot container" *ngFor="let pot of pots">
     <div class="summary" *ngIf="pot.summaryActive">
       <div class="set" (click)="changeSettings(pot)">
       <button type="button" class="settings fas fa-cog" ></button>
